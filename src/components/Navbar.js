@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from "../assests/logo.png"
-import {Link} from "react-router-dom"
+import {Link,NavLink} from "react-router-dom"
 import {toast} from "react-hot-toast"
 
 const Navbar = (props) => {
@@ -17,22 +17,26 @@ const Navbar = (props) => {
         <nav>
             {
                 isLoggedIn &&
-                <ul className='text-richblack-100 flex gap-x-6'>
+                <ul className='text-richblack-100 flex gap-x-9'>
                 <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                     px-[12px] rounded-[8px] border border-richblack-700'>
-                    <Link to="/">Home</Link>
+                    <NavLink to="/dashboard">Dashboard</NavLink>
                 </li>
                 <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                     px-[12px] rounded-[8px] border border-richblack-700'>
-                    <Link to="/notification">Notification</Link>
+                    <NavLink to="/notification">Notification</NavLink>
                 </li>
                 <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                     px-[12px] rounded-[8px] border border-richblack-700'>
-                    <Link to="/menu">Menu</Link>
+                    <Link to="/Bill">Bill Section</Link>
                 </li>
                 <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                     px-[12px] rounded-[8px] border border-richblack-700'>
-                    <Link to="/complaint">Complaint</Link>
+                    <NavLink to="/menu">Menu</NavLink>
+                </li>
+                <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                    px-[12px] rounded-[8px] border border-richblack-700'>
+                    <NavLink to="/complaint">Complaint</NavLink>
                 </li>
             </ul>
             }
