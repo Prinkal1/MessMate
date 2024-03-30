@@ -10,6 +10,7 @@ const SignupForm = ({setIsLoggedIn}) => {
         name : "",
         messacc :"",
         email:"",
+        phoneno:"",
         password:"",
         confirmPassword:""
         
@@ -57,28 +58,7 @@ const SignupForm = ({setIsLoggedIn}) => {
 
     return(
         <div>
-            {/* student-Instructor tab */}
-        <div
-        className='flex bg-richblack-800 p-1 gap-x-1 my-6 rounded-full max-w-max '>
-
-            <button
-            className={`${accountType === "student" 
-            ?
-              "bg-richblack-900 text-richblack-5"
-            :"bg-transparent text-richblack-200"} py-2 px-5 rounded-full transition-all duration-200`}
-            onClick={()=> setAccountType("student")}>
-                Student
-            </button>
-
-            <button
-            className={`${accountType === "admin" 
-            ?
-              "bg-richblack-900 text-richblack-5"
-            :"bg-transparent text-richblack-200"} py-2 px-5 rounded-full transition-all duration-200`}
-            onClick={() => setAccountType("admin")}>
-                Admin
-            </button>
-        </div>
+        
         <form onSubmit={submitHandler} >
         {/* name */}
             <div className='w-full'>
@@ -97,22 +77,21 @@ const SignupForm = ({setIsLoggedIn}) => {
 
                     
             </div>
-           
+           <br/>
 
             <div>
                 <label className='w-full'>
-                    <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Mess Account Number<sup className='text-pink-200'>*</sup></p>
-                        <input
-                            required
-                            type="number"
-                            name="messacc"
-                            onChange={changeHandler}
-                            placeholder="Enter mess account"
-                            value={formData.messacc}
-                            className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
-                        />
-                </label>
-                   
+                <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Mess Account Number<sup className='text-pink-200'>*</sup></p>
+                    <input
+                        required
+                        type="number"
+                        name="messacc"
+                        onChange={changeHandler}
+                        placeholder="Enter mess account"
+                        value={formData.messacc}
+                        className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
+                    />
+                </label>    
             </div>
 
             {/* email Add */}
@@ -126,6 +105,22 @@ const SignupForm = ({setIsLoggedIn}) => {
                         onChange={changeHandler}
                         placeholder="Enter Email Address "
                         value={formData.email}
+                        className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
+                    />
+            </label>
+            </div>
+            
+            {/* phone no*/}
+            <div className='mt-[20px]'>
+            <label className='w-full mt-[20px]'>
+                    <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Phone Number<sup className='text-pink-200'>*</sup></p>
+                    <input
+                        required
+                        type="number"
+                        name="phoneno"
+                        onChange={changeHandler}
+                        placeholder="Enter Your Phone Number"
+                        value={formData.phoneno}
                         className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
                     />
             </label>

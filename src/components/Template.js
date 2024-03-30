@@ -14,6 +14,7 @@ const Template = ({title, formtype, setIsLoggedIn}) => {
             >
                 {title}
             </h1>
+            <br/>
 
             {formtype === "signup" ? 
             (<SignupForm setIsLoggedIn={setIsLoggedIn}/>):

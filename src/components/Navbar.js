@@ -1,8 +1,7 @@
 import React from 'react'
-import logo from "../assets/logo.png"
+import logo from "../assests/logo.png"
 import {Link} from "react-router-dom"
 import {toast} from "react-hot-toast"
-
 
 const Navbar = (props) => {
     let isLoggedIn = props.isLoggedIn;
@@ -12,10 +11,34 @@ const Navbar = (props) => {
     <div className='flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto'>
 
         <Link to="/"> 
-            <img src={logo} alt="Logo" width={100} height={22} loading="lazy"/>
+            <img src={logo} alt="Logo" width={100} height={14} loading="lazy"/>
         </Link>
 
-    
+        <nav>
+            {
+                isLoggedIn &&
+                <ul className='text-richblack-100 flex gap-x-6'>
+                <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                    px-[12px] rounded-[8px] border border-richblack-700'>
+                    <Link to="/">Home</Link>
+                </li>
+                <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                    px-[12px] rounded-[8px] border border-richblack-700'>
+                    <Link to="/notification">Notification</Link>
+                </li>
+                <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                    px-[12px] rounded-[8px] border border-richblack-700'>
+                    <Link to="/menu">Menu</Link>
+                </li>
+                <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                    px-[12px] rounded-[8px] border border-richblack-700'>
+                    <Link to="/complaint">Complaint</Link>
+                </li>
+            </ul>
+            }
+            
+        </nav>
+
         {/* Login - SignUp - LogOut - Dashboard */}
         <div className='flex items-center gap-x-4'>
             { !isLoggedIn &&
