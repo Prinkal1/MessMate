@@ -8,3 +8,8 @@
  JWT : npm i jsonwebtoken ;
  cookie parser : npm i cookie-parser ;
  nodemailer : nom i nodemailer ;
+ npm i react-otp-input ;
+ npm i redux-toolkit ;
+ npm i @reduxjs/toolkit ;
+ npm i react-redux ;
+ npm install axios ;

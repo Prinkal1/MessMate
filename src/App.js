@@ -11,6 +11,8 @@ import Notification from "./pages/Notification"
 import Menu from "./pages/Menu"
 import Profile from "./pages/Profile"
 import Bill from "./pages/Bill"
+import ForgotPassword from "./pages/ForgotPassword"
+import UpdatePassword from "./pages/UpdatePassword"
 import PrivateRoute from "./components/PrivateRoute"
 
 function App() {
@@ -47,11 +49,14 @@ function App() {
         } />
 
         <Route path="/profile" element = {<Profile/> } />
-        <Route path="Bill" element = {
+        <Route path="/Bill" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
               <Bill/>
           </PrivateRoute>
         } />
+        <Route path="/ForgotPassword" element = {<ForgotPassword/>} />
+        <Route path="/UpdatePassword" element = {<UpdatePassword/>} />
+
 
       </Routes>
     </div>
