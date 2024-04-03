@@ -13,3 +13,4 @@
  npm i @reduxjs/toolkit ;
  npm i react-redux ;
  npm install axios ;
+ npm i react-otp-input ;

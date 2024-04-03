@@ -12,6 +12,7 @@ import Menu from "./pages/Menu"
 import Profile from "./pages/Profile"
 import Bill from "./pages/Bill"
 import ForgotPassword from "./pages/ForgotPassword"
+import VerifyEmail from "./pages/VerifyEmail"
 import UpdatePassword from "./pages/UpdatePassword"
 import PrivateRoute from "./components/PrivateRoute"
 
@@ -54,8 +55,9 @@ function App() {
               <Bill/>
           </PrivateRoute>
         } />
-        <Route path="/ForgotPassword" element = {<ForgotPassword/>} />
-        <Route path="/UpdatePassword" element = {<UpdatePassword/>} />
+        <Route path="/forgot-password" element = {<ForgotPassword/>} />
+        <Route path="/verify-email" element = {<VerifyEmail/>} />
+        <Route path="/update-password/:id" element = {<UpdatePassword/>} />
 
 
       </Routes>

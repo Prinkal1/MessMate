@@ -28,6 +28,8 @@ function VerifyEmail() {
       firstName,
       lastName,
       email,
+      messacc,
+      contactNumber,
       password,
       confirmPassword,
     } = signupData;
@@ -38,6 +40,8 @@ function VerifyEmail() {
         firstName,
         lastName,
         email,
+        messacc,
+        contactNumber,
         password,
         confirmPassword,
         otp,
@@ -47,7 +51,7 @@ function VerifyEmail() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] grid place-items-center">
+    <div className="min-h-[calc(100vh-22.5rem)] grid place-items-center">
       {loading ? (
         <div>
           <div className="spinner"></div>

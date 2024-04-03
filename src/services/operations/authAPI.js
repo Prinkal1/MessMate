@@ -45,6 +45,8 @@ export function signUp(
   firstName,
   lastName,
   email,
+  messacc,
+  contactNumber,
   password,
   confirmPassword,
   otp,
@@ -59,6 +61,8 @@ export function signUp(
         firstName,
         lastName,
         email,
+        messacc,
+        contactNumber,
         password,
         confirmPassword,
         otp,
@@ -104,7 +108,8 @@ export function login(email, password, navigate) {
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
       dispatch(setUser({ ...response.data.user, image: userImage }))
       localStorage.setItem("token", JSON.stringify(response.data.token))
-      navigate("/dashboard/my-profile")
+      localStorage.setItem("user", JSON.stringify(response.data.user))
+      navigate("/dashboard")
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
       toast.error("Login Failed")
@@ -132,6 +137,7 @@ export function getPasswordResetToken(email, setEmailSent) {
       toast.success("Reset Email Sent")
       setEmailSent(true)
     } catch (error) {
+      
       console.log("RESETPASSTOKEN ERROR............", error)
       toast.error("Failed To Send Reset Email")
     }
@@ -140,7 +146,7 @@ export function getPasswordResetToken(email, setEmailSent) {
   }
 }
 
-export function resetPassword(password, confirmPassword, token, navigate) {
+export function resetPassword(password, confirmPassword, token,navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
