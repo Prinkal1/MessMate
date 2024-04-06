@@ -35,7 +35,7 @@ function LoginForm() {
       className="mt-6 flex w-full flex-col gap-y-4"
     >
       <label className="w-full">
-        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+        <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
           Email Address <sup className="text-pink-200">*</sup>
         </p>
         <input
@@ -45,11 +45,11 @@ function LoginForm() {
           value={email}
           onChange={handleOnChange}
           placeholder="Enter email address"
-          className="form-style w-full"
+          className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
         />
       </label>
-      <label className="relative">
-        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+      <label className="w-full relative">
+        <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
           Password <sup className="text-pink-200">*</sup>
         </p>
         <input
@@ -59,7 +59,7 @@ function LoginForm() {
           value={password}
           onChange={handleOnChange}
           placeholder="Enter Password"
-          className="form-style w-full !pr-10"
+          className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
         />
         <span
           onClick={() => setShowPassword((prev) => !prev)}

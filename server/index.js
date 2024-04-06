@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");
+const pageRoutes = require("./routes/Pages");
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -25,6 +26,7 @@ app.use(
 // routes
 app.use("/auth", userRoutes);
 app.use("/profile", profileRoutes);
+app.use("/pages", pageRoutes);
 
 app.get("/", (req, res) => {
 	return res.json({

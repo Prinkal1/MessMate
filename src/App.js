@@ -9,10 +9,13 @@ import Dashboard from "./pages/Dashboard"
 import Complaint from "./pages/Complaint"
 import Notification from "./pages/Notification"
 import Menu from "./pages/Menu"
+import Menut from "./pages/Menut"
+import Menuw from "./pages/Menuw"
 import Profile from "./pages/Profile"
 import Bill from "./pages/Bill"
 import ForgotPassword from "./pages/ForgotPassword"
 import VerifyEmail from "./pages/VerifyEmail"
+import Settings from "./pages/Settings"
 import UpdatePassword from "./pages/UpdatePassword"
 import PrivateRoute from "./components/PrivateRoute"
 
@@ -48,8 +51,11 @@ function App() {
               <Menu/>
           </PrivateRoute>
         } />
+         <Route path="/menut" element = {<Menut/> } />
+         <Route path="/menuw" element = {<Menuw/> } />
 
         <Route path="/profile" element = {<Profile/> } />
+        <Route path="/settings" element = {<Settings/> } />
         <Route path="/Bill" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
               <Bill/>

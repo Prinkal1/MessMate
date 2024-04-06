@@ -85,7 +85,7 @@ function SignupForm() {
       type: ACCOUNT_TYPE.ADMIN,
     },
   ]
-
+ 
   return (
     <div>
       {/* Tab */}
@@ -94,7 +94,7 @@ function SignupForm() {
       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
         <div className="flex gap-x-4">
           <label>
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+            <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
               First Name <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -104,7 +104,7 @@ function SignupForm() {
               value={firstName}
               onChange={handleOnChange}
               placeholder="Enter first name"
-              className="form-style w-full"
+              className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
             />
           </label>
           <label>
@@ -118,7 +118,7 @@ function SignupForm() {
               value={lastName}
               onChange={handleOnChange}
               placeholder="Enter last name"
-              className="form-style w-full"
+              className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
             />
           </label>
         </div>
@@ -133,7 +133,7 @@ function SignupForm() {
             value={email}
             onChange={handleOnChange}
             placeholder="Enter email address"
-            className="form-style w-full"
+            className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
           />
         </label>
         
@@ -160,7 +160,7 @@ function SignupForm() {
             value={contactNumber}
             onChange={handleOnChange}
             placeholder="Enter contactNumber"
-            className="form-style w-full"
+            className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
           />
         </label> 
         
@@ -176,7 +176,7 @@ function SignupForm() {
               value={password}
               onChange={handleOnChange}
               placeholder="Enter Password"
-              className="form-style w-full !pr-10"
+              className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
@@ -200,7 +200,7 @@ function SignupForm() {
               value={confirmPassword}
               onChange={handleOnChange}
               placeholder="Confirm Password"
-              className="form-style w-full !pr-10"
+              className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
             />
             <span
               onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -222,7 +222,9 @@ function SignupForm() {
         </button>
       </form>
     </div>
+    
   )
+  
 }
 
 export default SignupForm

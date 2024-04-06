@@ -14,3 +14,4 @@
  npm i react-redux ;
  npm install axios ;
  npm i react-otp-input ;
+ npm i react hook form ;

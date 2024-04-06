@@ -21,3 +21,12 @@ export const settingsEndpoints = {
   CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
   DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
 }
+
+//MENU PAGE API
+export const menuEndpoints = {
+  FETCH_MENU_API: BASE_URL + "/pages/menufetch",
+  ADD_MENU_API: BASE_URL + "/pages/menuadd",
+  UPDATE_MENU_API: BASE_URL + "/pages/menuUpdate",
+  FETCHALL_MENU_API: BASE_URL + "/pages/menuAll",
+}
+
