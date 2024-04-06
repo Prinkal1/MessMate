@@ -16,6 +16,7 @@ module.exports = {
         complaint : "#74757d",
         grayText: "#818597",
         lightGray: "#e2e2e2",
+        notifi: "#5b95eb",
         grayBlue: "#344a6c",
         deepBlueHead: "#162f56",
         gray2: "#525a76",

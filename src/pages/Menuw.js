@@ -7,16 +7,16 @@ export default function Menuw(){
     const[menu , setMenu] = useState([]);
     useEffect(()=> {
         axios.get(`http://localhost:4000/pages/menuAll`)
-        .then(res =>{setMenu(res.data.menu)
-        console.log(res);
+        .then(res =>{
+            setMenu(res.data.menu)
+            console.log(res);
         })
         
         .catch(err =>console.log(err))
-        
     },[])
     return(
         
-        <div className='w-[40%] flex justify-center align-center mt-11 '>
+        <div className='w-[50%] flex justify-center align-center mt-11 '>
             
             <div className='w-[50%] '>
                 

@@ -115,7 +115,7 @@ exports.menuAll = async (req, res) =>{
         return res.status(200).json({
 			success: true,
 			menu,
-			message: "Menu updated successfully",
+			message: "Menu fetched successfully",
 		});
       } catch (error) {
         res.status(500).json({ message: error.message });
