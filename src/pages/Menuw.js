@@ -15,10 +15,12 @@ export default function Menuw(){
         
     },[])
     return(
-        <div className='w-[40%] flex justify-center align-center'>
-            <div className='w-[30%]'>
+        
+        <div className='w-[40%] flex justify-center align-center mt-11 '>
+            
+            <div className='w-[50%] '>
                 
-            <table className='table text-white'>
+            <table className='table text-white text-6xl bg-slate-600'>
                 <thead>
                     <tr>
                         <th>Day</th>
