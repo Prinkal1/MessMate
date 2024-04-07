@@ -13,7 +13,7 @@ export default function Notification(){
     .catch(err =>console.log(err))
     },[])
     return(
-        <div className='flex flex-col  items-center text-lightBlue  h-full '>
+        <div className='flex flex-col  items-center text-lightBlue bg-richblack-900 h-full '>
             <h1 className='mt-[6rem] text-5xl hover:scale-105 transition-all duration-200'><b>NOTIFICATIONS...!!!</b></h1>
             <h1 className=' text-4xl hover:scale-105 transition-all duration-200 mt-[2rem]'><b>MESS TIMINGS ARE...!!!</b></h1>
             <div class="grid grid-cols-3 grid-rows-2 gap-4 w-11/12 max-w-[1080px] mt-[5rem]">
@@ -29,9 +29,7 @@ export default function Notification(){
         
             </div>
             <br/><br/><br/>
-            <div className='w-[50%] flex justify-center align-center mt-1 '>
-            
-            <div className='w-[100%] '>
+            <div className='flex w-11/12 max-w-[1160px] mx-auto justify-center mb-[2rem] '>
                 
             <table className='table text-black text-bold text-3xl bg-slate-600'>
                 <thead className=' text-black text-bold text-3xl '>
@@ -57,7 +55,7 @@ export default function Notification(){
             )}
                 </tbody>
             </table>
-            </div>
+            
         </div>
         </div>
     )

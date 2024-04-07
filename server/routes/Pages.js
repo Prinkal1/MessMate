@@ -15,6 +15,15 @@ const{
     fetchNotification
 }= require("../controllers/Notification")
 
+//complaint
+const{
+    addComplaint ,
+    fetchComplaint
+}= require("../controllers/Complaint")
+
+
+
+
 //menu
 router.get("/menufetch/:day",menufetch)
 router.post("/menuadd" ,menuadd)
@@ -24,5 +33,9 @@ router.get("/menuAll",menuAll)
 //notification
 router.post("/addNotification" ,addNotification)
 router.get("/fetchNotification",fetchNotification)
+
+//complaint
+router.post("/addComplaint" ,addComplaint)
+router.get("/fetchComplaint",fetchComplaint)
 
 module.exports = router

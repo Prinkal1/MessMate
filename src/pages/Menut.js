@@ -32,10 +32,10 @@ export default function Menut(){
 
   return (
     <div>
-        <h1 className='pt-[3rem] text-6xl text-white ml-[30%]'>SELECT DAY FROM DROPDOWN :</h1>
+        <h1 className='pt-[2rem] text-5xl text-white ml-[30%]'>SELECT DAY FROM DROPDOWN :</h1>
       
-      <label htmlFor="day" className='pt-[3rem] text-5xl text-white ml-[30%] mt-[1rem]'>Select a day :</label>
-      <select id="day" value={selectedDay} onChange={handleDayChange} className='pt-5 text-4xl text-black ml-[4%] mt-[3rem] text-center border-3 border-black'>
+      <label htmlFor="day" className='pt-[1rem] text-4xl text-white ml-[30%] mt-[1rem]'>Select a day :</label>
+      <select id="day" value={selectedDay} onChange={handleDayChange} className='pt-5 text-4xl text-black ml-[2%] mt-[3rem] text-center border-3 border-black'>
         <option value="" >Select</option>
         <option value="Monday">Monday</option>
         <option value="Tuesday">Tuesday</option>
@@ -48,10 +48,10 @@ export default function Menut(){
       </select>
       <br></br>
       <button onClick={handleFetchMenu}
-      className="rounded-[8px] bg-yellow-50 py-[18px] px-[22px] mt-[3rem] font-medium text-richblack-900 text-2xl ml-[40%]">CLICK HERE</button>
+      className="rounded-[8px] bg-yellow-50 py-[10px] px-[12px] mt-[1rem] font-medium text-richblack-900 text-2xl ml-[40%]">CLICK HERE</button>
 
       <div>
-        <h3 className="bg-gray-300 p-4 w-[40%] ml-[30%] rounded-[8px] mt-[3rem] text-center text-4xl">Breakfast</h3>
+        <h3 className="bg-gray-300 p-4 w-[40%] ml-[30%] rounded-[8px] mt-[2rem] text-center text-4xl">Breakfast</h3>
         <ul>
         <li className='bg-complaint p-4 w-[40%] ml-[30%] rounded-[8px] mt-[1rem] text-center text-4xl'>{menu?.data?.Breakfast}</li>
         </ul>

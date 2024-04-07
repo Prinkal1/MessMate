@@ -16,9 +16,8 @@ export default function Menuw(){
     },[])
     return(
         
-        <div className='w-[50%] flex justify-center align-center mt-11 '>
+        <div className='flex  w-11/12 max-w-[1160px] py-12 mx-auto justify-center '>
             
-            <div className='w-[50%] '>
                 
             <table className='table text-white text-6xl bg-slate-600'>
                 <thead>
@@ -48,7 +47,7 @@ export default function Menuw(){
             )}
                 </tbody>
             </table>
-            </div>
+            
         </div>
     )
 };
