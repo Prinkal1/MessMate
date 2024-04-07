@@ -35,7 +35,7 @@ function LoginForm() {
       className="mt-6 flex w-full flex-col gap-y-4"
     >
       <label className="w-full">
-        <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+        <p className="text-[1.5em] text-richblack-5 mb-[1rem] leading-[1.375rem]">
           Email Address <sup className="text-pink-200">*</sup>
         </p>
         <input
@@ -49,7 +49,7 @@ function LoginForm() {
         />
       </label>
       <label className="w-full relative">
-        <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+        <p className="text-[1.5rem] text-richblack-5 mb-1 leading-[1.375rem] mt-[1.5rem]">
           Password <sup className="text-pink-200">*</sup>
         </p>
         <input
@@ -59,11 +59,11 @@ function LoginForm() {
           value={password}
           onChange={handleOnChange}
           placeholder="Enter Password"
-          className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
+          className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] mt-[1rem]"
         />
         <span
           onClick={() => setShowPassword((prev) => !prev)}
-          className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+          className="absolute right-3 top-[5rem] z-[10] cursor-pointer"
         >
           {showPassword ? (
             <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
@@ -72,14 +72,14 @@ function LoginForm() {
           )}
         </span>
         <Link to="/forgot-password">
-          <p className="mt-1 ml-auto max-w-max text-xs text-blue-100">
+          <p className=" ml-auto max-w-max  text-blue-100 text-xl mt-[1rem]">
             Forgot Password
           </p>
         </Link>
       </label>
       <button
         type="submit"
-        className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
+        className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-bold text-2xl text-richblack-900"
       >
         Sign In
       </button>

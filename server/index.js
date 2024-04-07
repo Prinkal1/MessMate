@@ -3,6 +3,7 @@ const app = express();
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");
 const pageRoutes = require("./routes/Pages");
+const billRoutes = require("./routes/Bill");
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -27,6 +28,7 @@ app.use(
 app.use("/auth", userRoutes);
 app.use("/profile", profileRoutes);
 app.use("/pages", pageRoutes);
+app.use("/bill", billRoutes);
 
 app.get("/", (req, res) => {
 	return res.json({

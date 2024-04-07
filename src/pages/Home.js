@@ -8,7 +8,7 @@ const Home = ({isLoggedIn}) => {
       <div className='flex justify-center  gap-x-16 '>
             { !isLoggedIn &&
                 <Link to="/login">
-                    <button className='bg-richblack-800 text-richblack-100 py-[18px] 
+                    <button className='bg-richblack-800 text-richblack-100 py-[28px] 
                     px-[28px] rounded-[18px] border border-white hover:scale-105 transition-all duration-200'>
                         Log in
                     </button>
@@ -16,8 +16,8 @@ const Home = ({isLoggedIn}) => {
             }
             { !isLoggedIn &&
                 <Link to="/signup">
-                    <button  className='bg-richblack-800 text-richblack-100 py-[18px] 
-                    px-[18px] rounded-[18px] border  border-white hover:scale-105 transition-all duration-200'>
+                    <button  className='bg-richblack-800 text-richblack-100 py-[28px] 
+                    px-[28px] rounded-[18px] border  border-white hover:scale-105 transition-all duration-200'>
                         Sign up
                     </button>
                 </Link>

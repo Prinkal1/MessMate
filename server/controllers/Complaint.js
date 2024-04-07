@@ -35,16 +35,16 @@ exports.addComplaint = async (req, res) =>{
     }
 }
 
-// exports.fetchNotification = async (req, res) =>{
-//     try {
-//         const notifi = await Notification.find();
-//         console.log(notifi)
-//         return res.status(200).json({
-// 			success: true,
-// 			notifi,
-// 			message: "Notification fetched successfully",
-// 		});
-//       } catch (error) {
-//         res.status(500).json({ message: error.message });
-//       }
-// }
+exports.fetchComplaint = async (req, res) =>{
+    try {
+        const comp = await Complaint.find();
+        console.log(comp)
+        return res.status(200).json({
+			success: true,
+			comp,
+			message: "Complaint fetched successfully",
+		});
+      } catch (error) {
+        res.status(500).json({ message: error.message });
+      }
+}

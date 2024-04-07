@@ -42,7 +42,7 @@ export default function Menuw(){
               ))
             ) : (
               <tr>
-                <td colSpan="5">Loading...</td>
+                <td colSpan="5">NO DATA IS PRESENT...</td>
               </tr>
             )}
                 </tbody>

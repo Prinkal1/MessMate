@@ -8,7 +8,7 @@ const Template = ({title, formtype, setIsLoggedIn}) => {
 
         <div className='w-11/12 max-w-[450px]' >
             <h1
-            className='text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]' 
+            className='text-richblack-5 font-semibold text-[3rem] leading-[2.375rem]' 
             >
                 {title}
             </h1>
