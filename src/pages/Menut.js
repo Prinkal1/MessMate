@@ -31,7 +31,7 @@ export default function Menut(){
   };
 
   return (
-    <div>
+    <div className='bg-richblack-900'>
         <h1 className='pt-[2rem] text-5xl text-white ml-[30%]'>SELECT DAY FROM DROPDOWN :</h1>
       
       <label htmlFor="day" className='pt-[1rem] text-4xl text-white ml-[30%] mt-[1rem]'>Select a day :</label>

@@ -16,10 +16,10 @@ export default function Menuw(){
     },[])
     return(
         
-        <div className='flex  w-11/12 max-w-[1160px] py-12 mx-auto justify-center '>
+        <div className='flex  w-11/12 max-w-[1160px] py-4 mx-auto justify-center '>
             
                 
-            <table className='table text-white text-6xl bg-slate-600'>
+            <table className='table text-white text-6xl bg-slate-600 '>
                 <thead>
                     <tr>
                         <th>Day</th>

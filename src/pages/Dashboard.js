@@ -1,80 +1,82 @@
 import React from 'react'
 import { Link} from 'react-router-dom';
+import Template2 from '../components/Template2'
+import profile from "../assests/profile.jpg"
+import menu from "../assests/menu.jpg"
+import notification from "../assests/notification.jpg"
+import complaint from "../assests/complaint.jpg"
+import bill from "../assests/bill.jpg"
+import home from "../assests/home.jpg"
+
 const Dashboard = () => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[4rem] mt-10 w-11/12 max-w-[1080px] mx-auto'>
-        <div className ="w-full min-h-[10rem] relative cursor-pointer border-2 mt-[5rem] p-12 bg-richblack-800 rounded-full hover:scale-105 transition-all duration-200">
-          {/* <!--text part--> */}
-          <div>
-            <h3 className ="font-mullish font-bold text-lightBlue500 leading-[1.2] text-[1.375rem]">  Profile</h3>
-            <p className ="font-mullish text-white mt-6">Here You can see your Profile</p>  
-          </div>
-          <div className ="font-mullish font-bold text-lightBlue500 group-hover:text-grayBlue transition-all duration-200 mt-6">
-          <Link to = "/Profile">Know More</Link>
-          </div>
-        </div>
-
-        {/* menu */}
-        <div className ="w-full min-h-[10rem] relative cursor-pointer border-2 mt-[5rem] p-12 bg-richblack-800 rounded-full hover:scale-105 transition-all duration-200">
-          {/* <!--text part--> */}
-          <div>
-            <h3 className ="font-mullish font-bold text-lightBlue500 leading-[1.2] text-[1.375rem]"> Menu</h3>
-            <p className ="font-mullish text-white mt-6">Here You can see your daily and Weekly Menu</p>  
-          </div>
-          <div className ="font-mullish font-bold text-lightBlue500 group-hover:text-grayBlue transition-all duration-200 mt-6">
-          <Link to = "/Menu">Know More</Link>
-          </div>
-        </div>
-
-        {/* notification */}
-        <div className ="w-full min-h-[10rem] relative cursor-pointer border-2 mt-[5rem] p-12 bg-richblack-800 rounded-full hover:scale-105 transition-all duration-200">
-          {/* <!--text part--> */}
-          <div>
-            <h3 className ="font-mullish font-bold text-lightBlue500 leading-[1.2] text-[1.375rem]">Notifications</h3>
-            <p className ="font-mullish text-white mt-6">All the notifications regarding time and menu is updated here</p>  
-          </div>
-          <div className ="font-mullish font-bold text-lightBlue500 group-hover:text-grayBlue transition-all duration-200 mt-6">
-          <Link to = "/Notification">Know More</Link>
-          </div>
-        </div>
-
-        {/* complaint */}
-        <div className ="w-full min-h-[10rem] relative cursor-pointer border-2 mt-[0.5rem] p-12 bg-richblack-800 rounded-full hover:scale-105 transition-all duration-200">
-          {/* <!--text part--> */}
-          <div>
-            <h3 className ="font-mullish font-bold text-lightBlue500 leading-[1.2] text-[1.375rem]">Complaint & Suggestions</h3>
-            <p className ="font-mullish text-white mt-6">You can complaint about food and workers here.</p>  
-          </div>
-          <div className ="font-mullish font-bold text-lightBlue500 group-hover:text-grayBlue transition-all duration-200 mt-6">
-          <Link to = "/Complaint">Know More</Link>
-          </div>
-        </div>
-
-        {/* bill */}
-        <div className ="w-full min-h-[10rem] relative cursor-pointer border-2 mt-[0.5rem] p-12 bg-richblack-800 rounded-full hover:scale-105 transition-all duration-200">
-          {/* <!--text part--> */}
-          <div>
-            <h3 className ="font-mullish font-bold text-lightBlue500 leading-[1.2] text-[1.375rem]">Bill Section</h3>
-            <p className ="font-mullish text-white mt-6">Your monthly bill is updated here containg regular and extra bill.</p>  
-          </div>
-          <div className ="font-mullish font-bold text-lightBlue500 group-hover:text-grayBlue transition-all duration-200 mt-6">
-          <Link to = "/Bill">Know More</Link>
-          </div>
-        </div>
-
-
-        <div className ="w-full min-h-[10rem] relative cursor-pointer border-2 mt-[1rem] p-12 bg-richblack-800 rounded-full hover:scale-105 transition-all duration-200">
-          {/* <!--text part--> */}
-          <div>
-            <h3 className ="font-mullish font-bold text-lightBlue500 leading-[1.2] text-[1.375rem]">Home Page</h3>
-            <p className ="font-mullish text-white mt-6">GO TO</p>  
-          </div>
-          <div className ="font-mullish font-bold text-lightBlue500 group-hover:text-grayBlue transition-all duration-200 mt-6">
-          <Link to = "/">HOME PAGE</Link>
-          </div>
-        </div>
+    <div className='bg-richblack-900'>
+      
+    <div className='flex flex-col items-center mt-[4rem] text-white w-11/12 max-w-[1160px] py-4 mx-auto gap-y-16'>
         
+    <div className='flex justify-center  gap-x-16 text-4xl w-full min-h-[10rem]'>
+    <Template2
+    img = {profile}
+    title="PROFILE SECTION"
+    desc="Click to Check Your Profile"
+    link = "/profile"
+    name = "CLICK"   
+    />      
+
+    <Template2
+    img = {menu}
+    title="MENU MENU"
+    desc="Click Here To Check Menu"
+    link = "/menu"
+    name = "CLICK"   
+    />   
+
+    <Template2
+    img = {notification}
+    title="NOTIFICATION MENU"
+    desc=" Notifications Are Updated Here"
+    link = "/notification"
+    name = "CLICK"   
+    /> 
+
+    
     </div>
+    
+    </div>
+    <div className='flex flex-col items-center text-white   w-11/12 max-w-[1160px] py-4 mx-auto gap-y-16 mt-[4rem]'>
+        
+        <div className='flex justify-center  gap-x-16 text-4xl w-full min-h-[10rem] t-[10rem]'>
+        <Template2
+        img = {complaint}
+        title="COMPALINT SECTION"
+        desc="Click Here To Add Complaint"
+        link = "/complaint"
+        name = "CLICK"   
+        />      
+    
+        <Template2
+        img = {bill}
+        title="BILL SECTION"
+        desc="Click Here To Check Bill"
+        link = "/bill"
+        name = "CLICK"   
+        />   
+    
+        <Template2
+        img = {home}
+        title="HOME PAGE"
+        desc="Go To Home Page"
+        link = "/"
+        name = "CLICK"   
+        /> 
+    
+        
+      </div>
+            
+    </div>
+   
+  </div>
+    
   )
 }
 

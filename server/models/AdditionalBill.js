@@ -19,6 +19,7 @@ const additionalbillSchema = new mongoose.Schema(
         monthlyBill: {
 			type: Number,
 			trim: true,
+			default :"0"
 		},
         maggi: {
 			type: Number,
