@@ -21,6 +21,7 @@ export default function Settings() {
   const submitProfileForm = async (data) => {
     // console.log("Form Data - ", data)
     try {
+      console.log(token)
       dispatch(updateProfile(token, data))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)

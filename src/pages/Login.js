@@ -4,11 +4,11 @@ import Template from '../components/Template'
 
 const Login = ({setIsLoggedIn}) => {
   return (
-    <Template
+      <Template
       title="Welcome Back"
       formtype="login"
       setIsLoggedIn={setIsLoggedIn}
-    />
+    /> 
   )
 }
 
