@@ -42,8 +42,8 @@ export default function Menut(){
         <option value="Wednesday">Wednesday</option>
         <option value="Thursday">Thursday</option>
         <option value="Friday">Friday</option>
-        <option value="Friday">Saturday</option>
-        <option value="Friday">Sunday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
         {/* Add more options for other days */}
       </select>
       <br></br>
