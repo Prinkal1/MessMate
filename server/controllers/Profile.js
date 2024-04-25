@@ -11,7 +11,8 @@ exports.updateProfile = async (req, res) => {
       about = "",
       gender = "",
       year= "" ,
-      branch = ""
+      branch = "",
+      contactNumber=""
     } = req.body
     const id = req.user.id
 
@@ -33,6 +34,7 @@ exports.updateProfile = async (req, res) => {
     profile.gender = gender
     profile.year = year
     profile.branch = branch
+    profile.contactNumber = contactNumber
     console.log(about)
 
     // Save the updated profile
