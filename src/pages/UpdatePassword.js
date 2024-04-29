@@ -47,7 +47,7 @@ function UpdatePassword() {
           </p>
           <form onSubmit={handleOnSubmit}>
             <label className="relative">
-              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+              <p className="mb-1 text-[1.3rem] leading-[1.375rem] text-richblack-5">
                 New Password <sup className="text-pink-200">*</sup>
               </p>
               <input
@@ -57,7 +57,7 @@ function UpdatePassword() {
                 value={password}
                 onChange={handleOnChange}
                 placeholder="Enter Password"
-                className="form-style w-full !pr-10"
+                className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] mt-[1rem]"
               />
               <span
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -71,7 +71,7 @@ function UpdatePassword() {
               </span>
             </label>
             <label className="relative mt-3 block">
-              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+              <p className="mb-1 text-[1.3rem] leading-[1.375rem] text-richblack-5">
                 Confirm New Password <sup className="text-pink-200">*</sup>
               </p>
               <input
@@ -81,7 +81,7 @@ function UpdatePassword() {
                 value={confirmPassword}
                 onChange={handleOnChange}
                 placeholder="Confirm Password"
-                className="form-style w-full !pr-10"
+                className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] mt-[1rem]"
               />
               <span
                 onClick={() => setShowConfirmPassword((prev) => !prev)}
