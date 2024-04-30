@@ -89,12 +89,12 @@ function SignupForm() {
   return (
     <div>
       {/* Tab */}
-      <Tab tabData={tabData} field={accountType} setField={setAccountType} />
+      {/* <Tab tabData={tabData} field={accountType} setField={setAccountType} /> */}
       {/* Form */}
       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
         <div className="flex gap-x-4">
           <label>
-            <p className="text-[1rem] text-richblack-5 mb-1 leading-[1.375rem]">
+            <p className="text-[1rem] text-richblack-5 mb-1 leading-[1.375rem] mt-11">
               First Name <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -108,7 +108,7 @@ function SignupForm() {
             />
           </label>
           <label>
-            <p className="mb-1 text-[1rem] leading-[1.375rem] text-richblack-5">
+            <p className="mb-1 text-[1rem] leading-[1.375rem] text-richblack-5 mt-11">
               Last Name <sup className="text-pink-200">*</sup>
             </p>
             <input

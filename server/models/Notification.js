@@ -17,7 +17,7 @@ const notificationSchema = new mongoose.Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            expires: 3*24*60*60, // 3 days min mei delete
+            expires: 15*24*60*60, // 15 days min mei delete
         },
 	},
 );
