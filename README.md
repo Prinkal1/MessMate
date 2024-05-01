@@ -24,7 +24,6 @@
 
 ## Setup Instructions
 1. Clone the repository:
-   ```bash
    git clone https://github.com/Prinkal1/mess_repo1.git
 
 2. Install all dependencies written in req.txt file
