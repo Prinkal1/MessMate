@@ -10,7 +10,7 @@ const emailTemplate = require("../mail/templates/emailVerificationTemplate");
 // const { ACCOUNT_TYPE } = require("../../src/utils/constants");
 require("dotenv").config();
 
-// Signup Controller for Registering USers
+// Signup
 
 exports.signup = async (req, res) => {
 	try {
@@ -231,7 +231,7 @@ exports.sendotp = async (req, res) => {
 	}
 };
 
-// Controller for Changing Password
+// Changing Password
 exports.changePassword = async (req, res) => {
 	try {
 		const userDetails = await User.findById(req.user.id);
@@ -275,7 +275,6 @@ exports.changePassword = async (req, res) => {
 			);
 			console.log("Email sent successfully:", emailResponse.response);
 		} catch (error) {
-			// If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
 			console.error("Error occurred while sending email:", error);
 			return res.status(500).json({
 				success: false,
@@ -288,7 +287,6 @@ exports.changePassword = async (req, res) => {
 			.status(200)
 			.json({ success: true, message: "Password updated successfully" });
 	} catch (error) {
-		// If there's an error updating the password log the error 
 		console.error("Error occurred while updating password:", error);
 		return res.status(500).json({
 			success: false,

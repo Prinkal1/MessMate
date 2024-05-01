@@ -1,0 +1,14 @@
+Nodemon
+Toast
+Add Browser Router
+Icon
+Mongoose
+Bcrypt
+JWT
+Cookie Parser
+Nodemailer
+Axios
+env
+react-otp-input
+@reduxjs/toolkit
+react hook form

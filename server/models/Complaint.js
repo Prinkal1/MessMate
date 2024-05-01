@@ -9,7 +9,7 @@ const complaintSchema = new mongoose.Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            expires: 30*24*60*60, // 30 days min mei delete
+            expires: 3*30*24*60*60, // 3 months min mei delete
         },
 	},
 );
