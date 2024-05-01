@@ -24,7 +24,7 @@
 
 ## Setup Instructions
 1. Clone the repository:
-   git clone https://github.com/Prinkal1/mess_repo1.git
+   git clone https://github.com/Prinkal1/MessMate.git
 
 2. Install all dependencies written in req.txt file
 
