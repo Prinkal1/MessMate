@@ -30,4 +30,6 @@
 
 3. Change the MongoDB URL with your URL
 
-4. Change the SMTP server address , username , and password 
+4. Create a .env file in server and add SMTP server address , username , port, jwt secret key and password
+
+5. Use command npm run dev to start
