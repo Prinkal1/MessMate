@@ -3,11 +3,9 @@ import { toast } from "react-hot-toast"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-
 import { sendOtp } from "../services/operations/authAPI"
 import { setSignupData } from "../slices/authSlice"
 import { ACCOUNT_TYPE } from "../utils/constants"
-import Tab from "../components/Tab"
 
 function SignupForm() {
   const navigate = useNavigate()
@@ -71,26 +69,9 @@ function SignupForm() {
     })
     setAccountType(ACCOUNT_TYPE.STUDENT)
   }
-
-  // data to pass to Tab component
-  const tabData = [
-    {
-      id: 1,
-      tabName: "Student",
-      type: ACCOUNT_TYPE.STUDENT,
-    },
-    {
-      id: 2,
-      tabName: "Admin",
-      type: ACCOUNT_TYPE.ADMIN,
-    },
-  ]
  
   return (
     <div>
-      {/* Tab */}
-      {/* <Tab tabData={tabData} field={accountType} setField={setAccountType} /> */}
-      {/* Form */}
       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
         <div className="flex gap-x-4">
           <label>
