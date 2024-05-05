@@ -18,6 +18,13 @@ import VerifyEmail from "./pages/VerifyEmail"
 import Settings from "./pages/Settings"
 import UpdatePassword from "./pages/UpdatePassword"
 import PrivateRoute from "./components/PrivateRoute"
+import AdDashboard from "./pages/AdDashboard"
+import AdMenu from "./pages/AdMenu"
+import AdUsers from "./pages/AdUsers"
+import AdComplaint from "./pages/AdComplaint"
+import AdNotification from "./pages/AdNotification"
+import AdBill from "./pages/AdBill"
+
 
 function App() {
   const [isLoggedIn , setIsLoggedIn] = useState (false);
@@ -28,6 +35,7 @@ function App() {
         <Route path="/" element = {<Home isLoggedIn={isLoggedIn}/>}/>
         <Route path="/login" element = {<Login setIsLoggedIn={setIsLoggedIn}/>}/>
         <Route path="Signup" element = {<Signup setIsLoggedIn={setIsLoggedIn}/>}/>
+
         <Route path="/dashboard" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
               <Dashboard/>
@@ -65,6 +73,46 @@ function App() {
         <Route path="/verify-email" element = {<VerifyEmail/>} />
         <Route path="/update-password/:id" element = {<UpdatePassword/>} />
 
+
+
+        {/* for admin */}
+
+
+        <Route path="/addashboard" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdDashboard/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/adusers" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdUsers/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/admenu" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdMenu/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/adbill" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdBill/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/adcomplaint" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdComplaint/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/adnotification" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdNotification/>
+          </PrivateRoute>
+        } />
 
       </Routes>
     </div>

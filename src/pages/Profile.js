@@ -75,7 +75,7 @@ export default function Profile() {
             <RiEditBoxLine />
           </IconBtn>
         </div>
-        <div className="flex max-w-[80%] justify-between">
+        <div className="flex max-w-[80%] justify-between ">
           <div className="flex flex-col gap-y-5 ">
             <div>
               <p className="mb-2 text-2xl  text-complaint">First Name</p>
