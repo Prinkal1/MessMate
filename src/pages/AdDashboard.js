@@ -6,7 +6,7 @@ import menu from "../assests/menu.jpg"
 import notification from "../assests/notification.jpg"
 import complaint from "../assests/complaint.jpg"
 import bill from "../assests/bill.jpg"
-import home from "../assests/home.jpg"
+import user from "../assests/user.jpg"
 
 const Dashboard = () => {
   return (
@@ -24,21 +24,21 @@ const Dashboard = () => {
     />      
 
     <Template2
+    img = {user}
+    title="USER SECTION"
+    desc="You can view and delete all users and add admin"
+    link = "/adusers"
+    name = "CLICK"   
+    /> 
+
+
+    <Template2
     img = {menu}
-    title="MENU Section"
+    title="MENU SECTION"
     desc="Click Here To Check , Add and Update  Menu"
     link = "/admenu"
     name = "CLICK"   
     />   
-
-    <Template2
-    img = {notification}
-    title="NOTIFICATION MENU"
-    desc=" Notifications Are Added and Updated Here"
-    link = "/adnotification"
-    name = "CLICK"   
-    /> 
-
     
     </div>
     
@@ -46,6 +46,14 @@ const Dashboard = () => {
     <div className='flex flex-col items-center text-white   w-11/12 max-w-[1160px] py-4 mx-auto gap-y-16 mt-[4rem]'>
         
         <div className='flex justify-center  gap-x-16 text-4xl w-full min-h-[10rem] t-[10rem]'>
+        <Template2
+        img = {notification}
+        title="NOTIFICATION MENU"
+        desc=" Notifications Are Added Here"
+        link = "/adnotification"
+        name = "CLICK"   
+        /> 
+
         <Template2
         img = {complaint}
         title="COMPALINT SECTION"
@@ -61,15 +69,6 @@ const Dashboard = () => {
         link = "/adbill"
         name = "CLICK"   
         />   
-    
-        <Template2
-        img = {home}
-        title="HOME PAGE"
-        desc="Go To Home Page"
-        link = "/"
-        name = "CLICK"   
-        /> 
-    
         
       </div>    
     </div>
