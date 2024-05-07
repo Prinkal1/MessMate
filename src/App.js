@@ -24,6 +24,7 @@ import AdUsers from "./pages/AdUsers"
 import AdComplaint from "./pages/AdComplaint"
 import AdNotification from "./pages/AdNotification"
 import AdBill from "./pages/AdBill"
+import Menu_update from "./pages/Menu_update";
 
 
 function App() {
@@ -114,6 +115,11 @@ function App() {
           </PrivateRoute>
         } />
 
+        <Route path="/menu_update" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <Menu_update/>
+          </PrivateRoute>
+        } />
       </Routes>
     </div>
   );
