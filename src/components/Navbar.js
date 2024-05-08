@@ -9,6 +9,7 @@ function Navbar(){
     const { token } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { user } = useSelector((state) => state.profile);
     
         // let isLoggedIn = props.isLoggedIn;
         // let setIsLoggedIn = props.setIsLoggedIn;
@@ -20,34 +21,63 @@ function Navbar(){
                 <img src={logo} alt="Logo" width={100} height={14} loading="lazy"/>
             </Link>
     
-            <nav>
-                {
-                    token !== null &&
+            {token !== null && user.accountType === "Student" && (
+                <nav>
                     <ul className='text-richblack-100 flex gap-x-9'>
-                    <li className='bg-richblack-800 text-richblack-100 py-[8px] 
-                        px-[12px] rounded-[8px] border border-richblack-700'>
-                        <NavLink to="/dashboard">Dashboard</NavLink>
-                    </li>
-                    <li className='bg-richblack-800 text-richblack-100 py-[8px] 
-                        px-[12px] rounded-[8px] border border-richblack-700'>
-                        <NavLink to="/notification">Notification</NavLink>
-                    </li>
-                    <li className='bg-richblack-800 text-richblack-100 py-[8px] 
-                        px-[12px] rounded-[8px] border border-richblack-700'>
-                        <Link to="/Bill">Bill Section</Link>
-                    </li>
-                    <li className='bg-richblack-800 text-richblack-100 py-[8px] 
-                        px-[12px] rounded-[8px] border border-richblack-700'>
-                        <NavLink to="/menu">Menu</NavLink>
-                    </li>
-                    <li className='bg-richblack-800 text-richblack-100 py-[8px] 
-                        px-[12px] rounded-[8px] border border-richblack-700'>
-                        <NavLink to="/complaint">Complaint</NavLink>
-                    </li>
-                </ul>
-                }
-                
-            </nav>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/dashboard">Dashboard</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/notification">Notification</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <Link to="/Bill">Bill Section</Link>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/menu">Menu</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/complaint">Complaint</NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            )}
+
+            {token !== null && user.accountType === "Admin" && (
+                <nav>
+                    <ul className='text-richblack-100 flex gap-x-9'>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/addashboard">Dashboard</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/adusers">Users</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/adnotification">Notification</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/admenu">Menu</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/adcomplaint">Complaint</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <Link to="/adbill">Bill Section</Link>
+                        </li>
+                    </ul>
+                </nav>
+            )}
     
             {/* Login - SignUp - LogOut - Dashboard */}
             <div className='flex items-center gap-x-4'>
