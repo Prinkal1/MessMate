@@ -19,6 +19,7 @@ module.exports = {
         notifi: "#5b95eb",
         grayBlue: "#344a6c",
         deepBlueHead: "#162f56",
+        red:"#7E0707",
         gray2: "#525a76",
         richblack: {
           5: "#F1F2FF",

@@ -6,7 +6,8 @@ const {
     menufetch,
     menuadd,
     menuUpdate,
-    menuAll
+    menuAll,
+    menudelete
 } = require("../controllers/Menu")
 
 //notification
@@ -29,6 +30,8 @@ router.get("/menufetch/:day",menufetch)
 router.post("/menuadd" ,menuadd)
 router.put("/menuUpdate" ,menuUpdate)
 router.get("/menuAll",menuAll)
+router.delete("/menudelete",menudelete)
+
 
 //notification
 router.post("/addNotification" ,addNotification)

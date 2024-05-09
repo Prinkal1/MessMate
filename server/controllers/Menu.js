@@ -121,3 +121,20 @@ exports.menuAll = async (req, res) =>{
         res.status(500).json({ message: error.message });
       }
 }
+
+exports.menudelete = async (req, res) =>{
+    try {
+        const{Day} = req.body;
+        await Menu.deleteMany({ Day: Day });
+        return res.status(200).json({
+            success: true,
+            message: `Menu for ${Day} deleted successfully`,
+        });
+    
+      } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message 
+        });
+    }
+}

@@ -25,12 +25,13 @@ import AdComplaint from "./pages/AdComplaint"
 import AdNotification from "./pages/AdNotification"
 import AdBill from "./pages/AdBill"
 import Menu_update from "./pages/Menu_update";
+import AddMenu from "./pages/AddMenu"
 
 
 function App() {
   const [isLoggedIn , setIsLoggedIn] = useState (false);
   return (
-    <div className="w-screen h-screen bg-richblack-900 flex flex-col">
+    <div className="w-screen min-h-screen max-h-full bg-richblack-900 flex flex-col">
       <Navbar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn}/>
       <Routes>
         <Route path="/" element = {<Home isLoggedIn={isLoggedIn}/>}/>
@@ -118,6 +119,12 @@ function App() {
         <Route path="/menu_update" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
               <Menu_update/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/addmenu" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AddMenu/>
           </PrivateRoute>
         } />
       </Routes>
