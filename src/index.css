@@ -18,7 +18,7 @@ html{
 table {
   margin: 5rem auto;
   border-radius: 2rem;
-  border: 1rem hidden #443C68;
+  border: 1rem hidden #181138;
   border-collapse: collapse;
   box-shadow: 0 0 0 1px black;
   overflow: hidden;
@@ -32,14 +32,14 @@ li, p, a, td{
 
 thead {
   font-size: 1.8rem;
-  background-color: #443C68;
+  background-color: #577ce4;
   color: #fff;
 }
 
 th,
 td {
   border: 1px solid #443C68;
-  min-width: 30rem;
+  min-width: 20rem;
   padding: 1.5rem;
   line-height: 1.7;
 }

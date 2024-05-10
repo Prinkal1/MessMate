@@ -50,7 +50,7 @@ const Menu_update = ({isLoggedIn}) =>{
 
 
     return(
-        <div className='bg-richblack-900 w-[80%] max-w-[1160px] mx-auto'>
+        <div className='bg-richblack-900 w-[80%] max-w-[1160px] min-w-[50%] mx-auto'>
             <h1 className='pt-[2rem] text-5xl text-white ml-[10%] mt-[5rem]'>SELECT DAY WHOSE MENU YOU WANT TO DELETE FROM DROPDOWN :</h1>
       
             <label htmlFor="day" className='pt-[1rem] text-4xl text-white ml-[30%] mt-[1rem]'>Select a day :</label>
@@ -68,7 +68,7 @@ const Menu_update = ({isLoggedIn}) =>{
             <button onClick={handleFetchMenu}
             className="rounded-[8px] bg-yellow-50 py-[10px] px-[12px] mt-[1rem] font-medium text-richblack-900 text-2xl ml-[47%]">CLICK HERE</button>
             
-            <div className='flex w-[70%] max-w-[1160px] mx-auto justify-center  '>
+            <div className='flex w-[70%] max-w-[1160px] min-w-[50%] mx-auto justify-center  '>
             <table className='table text-white  bg-slate-600 '>
                 <thead >
                     <tr >
