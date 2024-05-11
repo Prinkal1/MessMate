@@ -1,7 +1,7 @@
 import React from 'react'
 import Template2 from '../components/Template2'
-import today from "../assests/today.jpg"
-import week from "../assests/week.jpg"
+import add_noti from "../assests/add_noti.jpg"
+import view_noti from "../assests/view_noti.jpg"
 
 export default function AdNotification(){
    
@@ -10,17 +10,15 @@ export default function AdNotification(){
       <div className='pt-[3rem] text-6xl'>MENU-SECTION</div>
       <div className='flex justify-center  gap-x-16 text-4xl'>
       <Template2
-        img = {today}
-        title="TODAY'S MENU"
-        desc="Click to Check today's menu"
-        link = "/menut"
+        img = {view_noti}
+        desc="Click here to view Notifications"
+        link = "/notification"
         name = "CLICK"   
     />      
 
     <Template2
-        img = {week}
-        title="WEEK'S MENU"
-        desc="Check Whole Week's Menu"
+        img = {add_noti}
+        desc="Click here to add Notification"
         link = "/menuw"
         name = "CLICK"   
     />    

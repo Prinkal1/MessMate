@@ -48,6 +48,14 @@ exports.menuadd = async (req, res) =>{
                 message: "All Fields are required",
             });
         }
+        // Check if menu already exists
+		const existingmenu = await User.findOne({ email });
+		if (existingmenu) {
+			return res.status(400).json({
+				success: false,
+				message: "Menu already exists.",
+			});
+		}
         const menu = await Menu.create({
 			Day,
             Breakfast,
