@@ -83,16 +83,14 @@ function Navbar(){
             <div className='flex items-center gap-x-4'>
                 { token === null &&
                     <Link to="/login">
-                        <button className='bg-richblack-800 text-richblack-100 py-[8px] 
-                        px-[12px] rounded-[8px] border border-richblack-700'>
+                        <button className="border-none text-white bg-gradient-to-r from-blue-800 via-blue-600 to-blue-500  rounded-full bg-[length:100%_auto] font-inherit text-[17px] py-2.5 px-6">
                             Log in
                         </button>
                     </Link>
                 }
                 { token === null &&
                     <Link to="/signup">
-                        <button  className='bg-richblack-800 text-richblack-100 py-[8px] 
-                        px-[12px] rounded-[8px] border border-richblack-700'>
+                        <button className="border-none text-white bg-gradient-to-r from-blue-800 via-blue-600 to-blue-500  rounded-full bg-[length:100%_auto] font-inherit text-[17px] py-2.5 px-6">
                             Sign up
                         </button>
                     </Link>
