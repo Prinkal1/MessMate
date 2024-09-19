@@ -18,10 +18,19 @@ const{
 
 //complaint
 const{
-    addComplaint ,
-    fetchComplaint
+    registerComplaint ,
+    fetchComplaint,
+    getbystudent,
+    resolve
 }= require("../controllers/Complaint")
 
+//suggestion
+const{
+    registerSuggestion ,
+    getbyadminSuggestion,
+    getbystudentSuggestion,
+    updateSuggestion
+}= require("../controllers/Suggestion")
 
 
 
@@ -38,7 +47,23 @@ router.post("/addNotification" ,addNotification)
 router.get("/fetchNotification",fetchNotification)
 
 //complaint
-router.post("/addComplaint" ,addComplaint)
+
 router.get("/fetchComplaint",fetchComplaint)
+
+router.post('/registerComplaint', registerComplaint);
+
+router.post('/fetchComplaintStudent', getbystudent);
+
+router.post('/resolveComplaint', resolve);
+
+
+// suggestion
+router.get("/getbyadminSuggestion",getbyadminSuggestion)
+
+router.post('/registerSuggestion', registerSuggestion);
+
+router.post('/getbystudentSuggestion', getbystudentSuggestion);
+
+router.post('/updateSuggestion', updateSuggestion);
 
 module.exports = router

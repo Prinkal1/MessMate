@@ -38,6 +38,10 @@ function Navbar(){
                         </li>
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>
+                            <Link to="/suggestion">Suggestion</Link>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
                             <NavLink to="/menu">Menu</NavLink>
                         </li>
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
@@ -63,9 +67,14 @@ function Navbar(){
                             px-[12px] rounded-[8px] border border-richblack-700'>
                             <NavLink to="/adnotification">Notification</NavLink>
                         </li>
+                        
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>
                             <NavLink to="/admenu">Menu</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/adsuggestion">Suggestion</NavLink>
                         </li>
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>

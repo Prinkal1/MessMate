@@ -2,44 +2,21 @@ require("dotenv").config();
 const Notification = require("../models/Notification")
 
 exports.addNotification = async (req, res) =>{
-    try{
-        const{
-            notification,
-            day,
-            date,
-            createdAt
-        }= req.body
-
-        //check all details are present
-        if (
-            !notification,
-            !day,
-            !date
-        ) {
-            return res.status(403).send({
-                success: false,
-                message: "Adding notification is required",
-            });
-        }
-        const notifi = await Notification.create({
-			notification,
-            day,
-            date,
-            createdAt
-		});
-        console.log(notifi)
-		return res.status(200).json({
-			success: true,
-			notifi,
-			message: "Notification added successfully",
-		});
-}catch (error) {
-    console.error(error);
-    return res.status(500).json({
-        success: false,
-        message: "Notification cannot be added",
-    });
-}
+    let success = false;
+    const { user, title, description } = req.body;
+    try {
+        const newNotification = new Notification({
+            user,
+            title,
+            description
+        });
+        await newNotification.save();
+        success = true;
+        res.json({ success, msg: 'Notification registered successfully' });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
 }
 
 exports.fetchNotification = async (req, res) =>{

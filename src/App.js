@@ -13,6 +13,7 @@ import Menut from "./pages/Menut"
 import Menuw from "./pages/Menuw"
 import Profile from "./pages/Profile"
 import Bill from "./pages/Bill"
+import Suggestion from "./pages/Suggestion"
 import ForgotPassword from "./pages/ForgotPassword"
 import VerifyEmail from "./pages/VerifyEmail"
 import Settings from "./pages/Settings"
@@ -23,6 +24,7 @@ import AdMenu from "./pages/AdMenu"
 import AdUsers from "./pages/AdUsers"
 import AdComplaint from "./pages/AdComplaint"
 import AdNotification from "./pages/AdNotification"
+import AdSuggestion from "./pages/AdSuggestion"
 import AdBill from "./pages/AdBill"
 import Menu_update from "./pages/Menu_update";
 import AddMenu from "./pages/AddMenu"
@@ -63,7 +65,7 @@ function App() {
         } />
          <Route path="/menut" element = {<Menut/> } />
          <Route path="/menuw" element = {<Menuw/> } />
-
+         <Route path="/suggestion" element = {<Suggestion/> } />
         <Route path="/profile" element = {<Profile/> } />
         <Route path="/settings" element = {<Settings/> } />
         <Route path="/Bill" element = {
@@ -95,6 +97,12 @@ function App() {
         <Route path="/admenu" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
               <AdMenu/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/adsuggestion" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdSuggestion/>
           </PrivateRoute>
         } />
 

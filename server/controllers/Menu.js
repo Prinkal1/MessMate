@@ -89,10 +89,10 @@ exports.menuUpdate = async (req, res) =>{
         }= req.body
 
         const updatedMenu = await Menu.findOneAndUpdate({ Day },
-                             { Breakfast },
-                             {Lunch},
-                             {Dinner},
-                             {Sweet_dish},
+                              {Breakfast ,
+                             Lunch,
+                             Dinner,
+                             Sweet_dish},
                             { new: true });
         if (!updatedMenu) {
           return res.status(404).json({

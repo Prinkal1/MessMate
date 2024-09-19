@@ -1,16 +1,31 @@
 const mongoose = require("mongoose");
-const complaintSchema = new mongoose.Schema(
+const Schema = mongoose.Schema
+const complaintSchema = Schema(
 	{
-		complaint: {
-			type: String,
-			required: true,
-			trim: true,
+		user:{
+			type:mongoose.Schema.Types.ObjectId,
+			ref:'User'
 		},
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            expires: 3*30*24*60*60, // 3 months mei delete
-        },
+		type:{
+			type:String,
+			required:true
+		},
+		title:{
+			type:String,
+			required:true
+		},
+		description:{
+			type:String,
+			required:true
+		},
+		status:{
+			type:String,
+			default:'pending'
+		},
+		date:{
+			type:Date,
+			default:Date.now
+		}
 	},
 );
 

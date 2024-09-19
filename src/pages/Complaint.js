@@ -1,65 +1,269 @@
-import React from 'react'
-import quote from "../assests/quote.jpg"
-import { Link } from "react-router-dom"
-import {useState } from 'react'
-import { toast } from 'react-hot-toast';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { Input } from "../pages/Input";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function Complaint()  {
-  const [formData, setFormData] = useState( {
-    complaint:""
-  })
+function Complaints() {
 
-  function changeHandler(event) {
-    setFormData( (prevData) =>(
-        {
-            ...prevData,
-            [event.target.name]:event.target.value
-        }))
+  const [loading, setLoading] = useState(false);
 
-}
+  const registerComplaint = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    let student = JSON.parse(localStorage.getItem("user"));
+    const complaint = {
+      student: student?._id,
+      title: title,
+      description: desc,
+      type: type,
+    };
 
-const handleOnSubmit = (e) => {
-  // e.preventDefault(); 
-  addComplaint();
-  
-}
-// const [submit, setsubmit] = useState('');
-const addComplaint = async () => {
-  try {
-    const response = await axios.post(`http://localhost:4000/pages/addComplaint`,formData);
-    console.log(response);
-    // setsubmit(response);
-    toast.success("Submit");
-    //  return response;
-  } catch (error) {
-    console.error('Error in adding complaint :', error);
+    const res = await fetch("http://localhost:4000/pages/registerComplaint", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(complaint),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      setRegComplaints([]);
+      toast.success(
+        "Complaint Registered Successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
+      setTitle("");
+      setDesc("");
+      setType("Hygiene");
+    } else {
+      toast.error(
+        data.errors, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
+    }
+    setLoading(false);
+  };
+
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [type, setType] = useState("Hygiene");
+
+  const types = ["Hygiene", "Utensils", "Workers", "Others"];
+
+  function chngType(e) {
+    setType(e.target.value);
   }
-};
-  return (
-    <div className='mt-[1rem] flex flex-col justify-center  w-11/12 max-w-[1160px] py-4 mx-auto  '>
-      <h1 className='mt-[4rem] text-5xl hover:scale-105 transition-all duration-200 text-complaint text-center'><b>COMPLAINTS AND SUGGESTIONS...!!!</b></h1>
-      <h1 className=' text-4xl hover:scale-105 transition-all duration-200 mt-[3rem] text-complaint text-center text-bold'><b>A GOOD SUGGESTION IS WORTH MORE THAN A HUNDRED GREAT IDEAS....!!!</b></h1>
-      <form onSubmit={handleOnSubmit}>
-       <textarea
-          required
-          onChange={changeHandler}
-          value = {formData.comments}
-          placeholder="ENTER COMPLAINTS && SUGGESTIONS... "
-          name="complaint"
-          className='bg-complaint rounded-[4.5rem] border bottom-6-black text-black w-[58%] h-[180%] p-[3rem] text-4xl items-center mt-[4rem]  ml-[19rem]'
-          ></textarea>
-          
-      <button 
-        type='submit'
-        className='bg-complaint text-black py-[18px] px-[28px] rounded-[18px] border border-black mt-[3rem] text-3xl'>
-        Submit
-      </button>     
-      
 
-      </form>
-      
+  function titleChange(e) {
+    setTitle(e.target.value);
+  }
+  function descChange(e) {
+    setDesc(e.target.value);
+  }
+
+  const complaintTitle = {
+    name: "complaint title",
+    placeholder: "Title",
+    req: true,
+    type: "text",
+    value: title,
+    onChange: titleChange,
+  };
+  const complaintType = {
+    name: "complaint type",
+    placeholder: "Type...",
+    req: true,
+    type: "text",
+    value: type,
+    onChange: chngType,
+  };
+
+  const [regComplaints, setRegComplaints] = useState([]);
+
+  
+  useEffect(()=> {
+    const student = JSON.parse(localStorage.getItem("user"));
+    const cmpln = { student: student?._id };
+    const fetchComplaints = async () => {
+      const res = await fetch("http://localhost:4000/pages/fetchComplaintStudent", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cmpln),
+      });
+      const data = await res.json();
+      let complaints = data.complaints;
+      complaints = complaints.map((complaint) => {
+        var date = new Date(complaint.date);
+        complaint.date = date.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+        return {
+          title: complaint.title,
+          status: complaint.status,
+          date: complaint.date,
+          type: complaint.type,
+        };
+      });
+      setRegComplaints(data.complaints);
+    }
+    fetchComplaints();
+  }, [regComplaints.length])
+
+
+  return (
+    <div className="w-full h-full flex flex-col gap-10 items-center justify-center md:p-0 px-10 max-h-screen overflow-y-auto pt-[20rem] md:pt-80 lg:p-0">
+      <h1 className="text-white font-bold text-5xl mt-10">Complaints</h1>
+      <div className="flex gap-5 flex-wrap items-center justify-center ">
+        <form
+          method="POST"
+          onSubmit={registerComplaint}
+          className="md:w-[35rem] w-full py-5 pb-7 px-10 bg-neutral-950 rounded-lg shadow-xl flex flex-col gap-5 h-[30rem]"
+        >
+          <div>
+            <label
+              htmlFor="description"
+              className="block mb-4 text-2xl font-medium text-white"
+            >
+              Your complaint type
+            </label>
+            <select
+              className="border sm:text-xl rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
+              onChange={chngType}
+            >
+              {types.map((type) => (
+                <option key={type}>{type}</option>
+              ))}
+            </select>
+            {type.toLowerCase() === "hygiene" ||
+            type.toLowerCase() === "utensils" ||
+            type.toLowerCase() === "workers" ? (
+              <></>
+            ) : (
+              <div className="mt-5">
+                <Input field={complaintType} />
+              </div>
+            )}
+          </div>
+         
+          <Input field={complaintTitle}  />
+          
+          <div>
+            <label
+              htmlFor="description"
+              className="block mb-4 text-2xl font-medium text-white"
+            >
+              Your complaint description
+            </label>
+            <textarea
+              name="description"
+              placeholder="Details of complaint"
+              className="border sm:text-xl rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
+              onChange={descChange}
+              value={desc}
+            ></textarea>
+            <button
+              type="submit"
+              className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 text-lg rounded-lg px-5 py-2.5 mt-5 text-center"
+              disabled={loading}
+            >
+              {loading ? 'Registering Complaint...':'Register Complaint'}
+            </button>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+          </div>
+        </form>
+        <div className="w-full md:w-[25rem] max-w-md max-h-96 p-4 border rounded-lg shadow sm:p-8 bg-neutral-950 border-neutral-900 drop-shadow-xl overflow-y-auto ">
+          <div className="flex items-center justify-between mb-4 ">
+            <h5 className="text-xl font-bold leading-none text-white">
+              Registered Complaints
+            </h5>
+          </div>
+          <div className="flow-root">
+            <ul role="list" className="divide-y divide-gray-700 text-white ">
+              {regComplaints.length === 0
+                ? "No complaints registered"
+                : regComplaints.map((complain) => (
+                    <li className="py-3 sm:py-4" key={complain.title}>
+                      <div className="flex items-center space-x-4">
+                        <div className="flex-shrink-0 text-white">
+                          {complain.status.toLowerCase() === "pending" ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={2}
+                              stroke="currentColor"
+                              className="w-7 h-7"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+                              />
+                            </svg>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M4.5 12.75l6 6 9-13.5"
+                              />
+                            </svg>
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium truncate text-white">
+                            {complain.title}
+                          </p>
+                          <p className="text-sm truncate text-gray-400">
+                            {complain.date}
+                          </p>
+                        </div>
+                        <div className="flex flex-col items-center text-base font-semibold text-white">
+                          {complain.type}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    
-  )
+  );
 }
+
+export default Complaints;

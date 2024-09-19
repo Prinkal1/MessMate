@@ -1,24 +1,23 @@
 const mongoose = require("mongoose");
 const notificationSchema = new mongoose.Schema(
 	{
-		notification: {
-			type: String,
-			required: true,
-			trim: true,
+		user:{
+			type:mongoose.Schema.Types.ObjectId,
+			ref:'User'
 		},
-		day:{
-			type: String,
-			required: true,
+		title:{
+			type:String,
+			required:true
+		},
+		description:{
+			type:String,
+			required:true
 		},
 		date:{
-			type: String,
-			required: true,
-		},
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            expires: 3*30*24*60*60, // 3 months mei delete
-        },
+			type:Date,
+			default:Date.now,
+			expires: 3*30*24*60*60, 
+		}
 	},
 );
 
