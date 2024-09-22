@@ -138,7 +138,7 @@ function AdComplaint() {
   }, [allComplaints.length, unsolvedComplaints.length, resolvedComplaints.length]);
 
   const graph = (
-    <div className="flex items-center justify-center md:h-64 h-40 md:w-96 w-full">
+    <div className="flex items-center justify-center md:h-[25rem] h-[30rem] md:w-[50rem] w-full ">
       <Line
         data={{
           labels: [
@@ -191,11 +191,11 @@ function AdComplaint() {
   );
 
   return (
-    <div className="w-full h-screen flex flex-col gap-10 md:gap-7  items-center  overflow-auto">
+    <div className="w-full h-screen flex flex-col gap-10 md:gap-10  items-center  overflow-auto">
       <h1 className="text-white font-bold text-5xl pt-[4rem]">Complaints</h1>
-      <div className="flex md:gap-7 flex-wrap pt-[10rem] justify-center mx-auto items-center gap-7">
+      <div className="flex md:gap-7 flex-wrap pt-[3rem] justify-center mx-auto items-center gap-7 ">
         {graph}
-        <div className="bg-neutral-950 px-10 py-5 rounded-xl shadow-xl w-96 max-h-64 overflow-auto">
+        <div className="bg-back-30 px-10 py-5 rounded-xl shadow-xl w-[30rem] max-h-64 overflow-auto">
           <span className="text-white font-bold text-xl">New Complaints</span>
           <ul role="list" className="divide-y divide-gray-700 text-white">
             {unsolvedComplaints.length === 0
@@ -231,7 +231,7 @@ function AdComplaint() {
                       </p>
                     </div>
                     <button
-                      className="hover:underline hover:text-green-600"
+                      className="hover:underline hover:text-green-600 text-xl"
                       onClick={() => dismissComplaint(complaint.id)}
                     >
                       Solved

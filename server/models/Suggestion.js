@@ -18,7 +18,8 @@ const suggestionSchema = new mongoose.Schema({
     },
     date:{
         type:Date,
-        default:Date.now
+        default:Date.now,
+        expires: 30*24*60*60*1000, 
     }
 })
 

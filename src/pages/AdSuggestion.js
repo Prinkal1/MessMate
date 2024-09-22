@@ -6,15 +6,7 @@ import { Loader } from "../components/Loader";
 
 function AdSuggestion() {
   const getSuggestions = async () => {
-    // const hostel = JSON.parse(localStorage.getItem("hostel"));
     const response = await fetch("http://localhost:4000/pages/getbyadminSuggestion" 
-    // {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ hostel: hostel._id }),
-    // }
 );
 
     const data = await response.json();
