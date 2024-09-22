@@ -34,9 +34,9 @@ export default function Notification(){
       }, [regNotification.length])
     return(
         <div className='flex flex-col  items-center text-lightBlue bg-richblack-900 h-full '>
-            <h1 className='mt-[6rem] text-5xl hover:scale-105 transition-all duration-200'><b>NOTIFICATIONS...!!!</b></h1>
-            <h1 className=' text-4xl hover:scale-105 transition-all duration-200 mt-[2rem]'><b>MESS TIMINGS ARE...!!!</b></h1>
-            <div class="grid grid-cols-3 grid-rows-2 gap-4 w-11/12 max-w-[1080px] mt-[5rem] ">
+            
+            <h1 className=' text-4xl hover:scale-105 transition-all duration-200 mt-[1rem]'><b>MESS TIMINGS ARE...!!!</b></h1>
+            <div class="grid grid-cols-3 grid-rows-2 gap-4 w-[50rem] max-w-[1080px] mt-[3rem] ">
             {/* <!-- Row 1 --> */}
                 <div class="bg-notifi text-deepBlue text-center border p-4 text-3xl hover:scale-105 transition-all duration-200 rounded-full">BREAKFAST</div>
                 <div class="bg-notifi text-deepBlue text-center border p-4 text-3xl hover:scale-105 transition-all duration-200 rounded-full">LUNCH</div>
@@ -49,9 +49,9 @@ export default function Notification(){
         
             </div>
             <br/><br/><br/>
-            <div className="w-full md:w-[25rem] max-w-md max-h-96 p-4 border rounded-lg shadow sm:p-8 bg-neutral-950 border-neutral-900 drop-shadow-xl overflow-y-auto ">
+            <div className="w-full md:w-[70rem] max-w-[1080px] max-h-96 p-4 border rounded-lg shadow sm:p-8 bg-neutral-950 border-neutral-900 drop-shadow-xl overflow-y-auto ">
           <div className="flex items-center justify-between mb-4 ">
-            <h5 className="text-xl font-bold leading-none text-white">
+            <h5 className="text-3xl font-bold leading-none text-white">
               Notifications....
             </h5>
           </div>
@@ -62,49 +62,17 @@ export default function Notification(){
                 : regNotification.map((notification) => (
                     <li className="py-3 sm:py-4" key={notification.title}>
                       <div className="flex items-center space-x-4">
-                        {/* <div className="flex-shrink-0 text-white">
-                          {notification.status.toLowerCase() === "pending" ? (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={2}
-                              stroke="currentColor"
-                              className="w-7 h-7"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
-                              />
-                            </svg>
-                          ) : (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="w-6 h-6"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M4.5 12.75l6 6 9-13.5"
-                              />
-                            </svg>
-                          )}
-                        </div> */}
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium truncate text-white">
+                          <p className="text-xl font-medium truncate text-white">
                             {notification.title}
                           </p>
-                          <p className="text-sm truncate text-gray-400">
-                            {notification.date}
+                          <p className="text-xl truncate text-gray-400">
+                            {notification.description}
+                            
                           </p>
                         </div>
-                        <div className="flex flex-col items-center text-base font-semibold text-white">
-                          {notification.description}
+                        <div className="flex flex-col items-center text-xl  text-white">
+                          {notification.date}
                         </div>
                       </div>
                     </li>
