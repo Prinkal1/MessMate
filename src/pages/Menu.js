@@ -5,9 +5,9 @@ import week from "../assests/week.jpg"
 
 const Menu = ({isLoggedIn}) => {
   return (
-    <div className='flex flex-col items-center text-white  h-full gap-y-16 '>
-      <div className='pt-[3rem] text-6xl'>MENU-SECTION</div>
-      <div className='flex justify-center  gap-x-16 text-4xl'>
+    <div className='flex flex-col items-center text-white  h-full gap-y-16 max-w-[80%] '>
+      <div className='pt-[3rem] text-6xl ml-[15%]'>MENU-SECTION</div>
+      <div className='flex justify-center  gap-x-16 text-4xl ml-[25%]'>
       <Template2
         img = {today}
         title="TODAY'S MENU"

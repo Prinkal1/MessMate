@@ -50,7 +50,7 @@ export default function Menut(){
       <button onClick={handleFetchMenu}
       className="rounded-[8px] bg-yellow-50 py-[10px] px-[12px] mt-[1rem] font-medium text-richblack-900 text-2xl ml-[40%]">CLICK HERE</button>
 
-      <div>
+      <div className='grid grid-cols-2  max-w-[50%] ml-[30%]'>
         <h3 className="bg-gray-300 p-4 w-[40%] ml-[30%] rounded-[8px] mt-[2rem] text-center text-4xl">Breakfast</h3>
         <ul>
         <li className='bg-complaint p-4 w-[40%] ml-[30%] rounded-[8px] mt-[1rem] text-center text-4xl'>{menu?.data?.Breakfast}</li>
