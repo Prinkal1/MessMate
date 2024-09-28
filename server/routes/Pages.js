@@ -39,13 +39,26 @@ const{
     csvStudent
 }= require("../controllers/User")
 
+//attendance
+const{
+    markAttendance,
+    getAttendance,
+    getAllAttendance,
+    updateAttendance
+}= require("../controllers/Attendance")
+
+
 
 //user
 router.get("/getAllStudents" ,getAllStudents)
 router.delete("/deleteStudent/:id",deleteStudent)
 router.get("/csvStudent",csvStudent)
 
-
+//attendance
+router.post("/markAttendance",markAttendance)
+router.post("/getAttendance",getAttendance)
+router.put("/updateAttendance",updateAttendance)
+router.get("/getAllAttendance",getAllAttendance)
 
 //menu
 router.get("/menufetch/:day",menufetch)

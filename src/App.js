@@ -26,8 +26,10 @@ import AdComplaint from "./pages/AdComplaint"
 import AdNotification from "./pages/AdNotification"
 import AdSuggestion from "./pages/AdSuggestion"
 import AdBill from "./pages/AdBill"
+import Attendance from "./pages/Attendance"
 import Menu_update from "./pages/Menu_update";
 import AddMenu from "./pages/AddMenu"
+import AdAttendance from "./pages/AdAttendance";
 
 
 function App() {
@@ -67,6 +69,7 @@ function App() {
          <Route path="/menuw" element = {<Menuw/> } />
          <Route path="/suggestion" element = {<Suggestion/> } />
         <Route path="/profile" element = {<Profile/> } />
+        <Route path="/attendance" element = {<Attendance/> } />
         <Route path="/settings" element = {<Settings/> } />
         <Route path="/Bill" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
@@ -91,6 +94,12 @@ function App() {
         <Route path="/adusers" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
               <AdUsers/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/adattendance" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdAttendance/>
           </PrivateRoute>
         } />
 
