@@ -32,6 +32,19 @@ const{
     updateSuggestion
 }= require("../controllers/Suggestion")
 
+//user
+const{
+    getAllStudents,
+    deleteStudent,
+    csvStudent
+}= require("../controllers/User")
+
+
+//user
+router.get("/getAllStudents" ,getAllStudents)
+router.delete("/deleteStudent/:id",deleteStudent)
+router.get("/csvStudent",csvStudent)
+
 
 
 //menu

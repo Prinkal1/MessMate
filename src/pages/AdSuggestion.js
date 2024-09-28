@@ -6,8 +6,7 @@ import { Loader } from "../components/Loader";
 
 function AdSuggestion() {
   const getSuggestions = async () => {
-    const response = await fetch("http://localhost:4000/pages/getbyadminSuggestion" 
-);
+    const response = await fetch("http://localhost:4000/pages/getbyadminSuggestion");
 
     const data = await response.json();
     if (data.success) {
