@@ -26,7 +26,7 @@ const Dashboard = () => {
     <Template2
     img = {user}
     title="USER SECTION"
-    desc="You can view and delete all users and add admin"
+    desc="You can view  all users and download CSV file"
     link = "/adusers"
     name = "CLICK"   
     /> 

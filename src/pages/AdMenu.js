@@ -28,7 +28,7 @@ export default function AdMenu() {
   const handleDayChange = (event) => {
     setSelectedDay(event.target.value);
   };
-
+  
   const [editing, setEditing] = useState({
     Breakfast: false,
     Lunch: false,

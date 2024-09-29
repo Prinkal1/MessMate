@@ -70,21 +70,18 @@ function Navbar(){
                         </li>
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>
-                            <NavLink to="/adusers">Users</NavLink>
+                            <NavLink to="/admessoff">Mess Off</NavLink>
                         </li>
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>
-                            <NavLink to="/adnotification">Notification</NavLink>
+                            <NavLink to="/adsuggestion">Suggestion</NavLink>
                         </li>
                         
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>
                             <NavLink to="/admenu">Menu</NavLink>
                         </li>
-                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
-                            px-[12px] rounded-[8px] border border-richblack-700'>
-                            <NavLink to="/adsuggestion">Suggestion</NavLink>
-                        </li>
+                       
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>
                             <NavLink to="/adcomplaint">Complaint</NavLink>
