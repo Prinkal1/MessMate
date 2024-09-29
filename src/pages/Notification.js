@@ -8,15 +8,7 @@ export default function Notification(){
         const student = JSON.parse(localStorage.getItem("user"));
         const notification = { student: student?._id };
         const fetchNotification = async () => {
-          const res = await fetch("http://localhost:4000/pages/fetchNotification"
-        //     , {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(cmpln),
-        //   }
-        );
+          const res = await fetch("http://localhost:4000/pages/fetchNotification");
           const data = await res.json();
           let notifi = data.notifi;
           notifi = notifi.map((notification) => {
@@ -49,7 +41,7 @@ export default function Notification(){
         
             </div>
             <br/><br/><br/>
-            <div className="w-full md:w-[70rem] max-w-[1080px] max-h-96 p-4 border rounded-lg shadow sm:p-8 bg-neutral-950 border-neutral-900 drop-shadow-xl overflow-y-auto ">
+            <div className="w-full md:w-[70rem] max-w-[1080px] max-h-96 p-4 border rounded-lg shadow sm:p-8 bg-neutral-950 border-neutral-900 drop-shadow-xl overflow-y-auto mb-[6rem]">
           <div className="flex items-center justify-between mb-4 ">
             <h5 className="text-3xl font-bold leading-none text-white">
               Notifications....

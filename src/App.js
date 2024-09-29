@@ -30,6 +30,8 @@ import Attendance from "./pages/Attendance"
 import Menu_update from "./pages/Menu_update";
 import AddMenu from "./pages/AddMenu"
 import AdAttendance from "./pages/AdAttendance";
+import MessOff from "./pages/MessOff"
+import AdMessOff from "./pages/AdMessOff"
 
 
 function App() {
@@ -71,6 +73,7 @@ function App() {
         <Route path="/profile" element = {<Profile/> } />
         <Route path="/attendance" element = {<Attendance/> } />
         <Route path="/settings" element = {<Settings/> } />
+        <Route path="/messoff" element = {<MessOff/> } />
         <Route path="/Bill" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
               <Bill/>
@@ -106,6 +109,11 @@ function App() {
         <Route path="/admenu" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
               <AdMenu/>
+          </PrivateRoute>
+        } />
+        <Route path="/admessoff" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdMessOff/>
           </PrivateRoute>
         } />
 

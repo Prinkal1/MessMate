@@ -1,6 +1,14 @@
 const express = require("express")
 const router = express.Router()
 
+//messoff
+const{
+    requestMessOff,
+    countMessOff,
+    listMessOff ,
+    updateMessOff
+}= require("../controllers/MessOff")
+
 //menu
 const {
     menufetch,
@@ -47,7 +55,11 @@ const{
     updateAttendance
 }= require("../controllers/Attendance")
 
-
+//messoff
+router.post('/requestMessOff', requestMessOff);
+router.post('/countMessOff', countMessOff);
+router.get('/listMessOff', listMessOff);
+router.post('/updateMessOff', updateMessOff);
 
 //user
 router.get("/getAllStudents" ,getAllStudents)

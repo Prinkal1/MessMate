@@ -109,7 +109,7 @@ const getAllAttendance = async (req, res) => {
         const attendance = await Attendance.find({
             user: { $in: users },
             date: { $gte: startOfDay.toISOString(), $lt: endOfDay.toISOString() }
-        }).populate('user', ['_id', 'firstName', 'lastName', 'email']);
+        }).populate('user', ['_id', 'firstName', 'lastName', 'email','messacc']);
 
         if (attendance.length === 0) {
             return res.status(404).json({ success: false, message: "No attendance records found for today." });

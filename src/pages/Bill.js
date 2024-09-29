@@ -14,7 +14,7 @@ const Bill = () =>{
     },[])
     return(
         <div>
-          <h1 className='mt-[6rem] text-notifi text-5xl hover:scale-105 transition-all duration-200 text-center'><b>BILL-SECTION...!!!</b></h1>
+          {/* <h1 className='mt-[6rem] text-notifi text-5xl hover:scale-105 transition-all duration-200 text-center'><b>BILL-SECTION...!!!</b></h1>
             <div className='flex  w-11/12 max-w-[1160px] py-12 mx-auto justify-center '>
             <h1 className='mt-[4rem] text-5xl hover:scale-105 transition-all duration-200 text-complaint text-center'>
                  {userBill.monthlyBill}
@@ -49,7 +49,7 @@ const Bill = () =>{
             )}
                 </tbody>
             </table>
-        </div>
+        </div> */}
         </div>
     )
 }

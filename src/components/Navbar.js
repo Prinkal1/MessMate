@@ -28,13 +28,14 @@ function Navbar(){
                             px-[12px] rounded-[8px] border border-richblack-700'>
                             <NavLink to="/dashboard">Dashboard</NavLink>
                         </li>
-                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
-                            px-[12px] rounded-[8px] border border-richblack-700'>
-                            <NavLink to="/notification">Notification</NavLink>
-                        </li>
+                    
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>
                             <NavLink to="/attendance">Attendance</NavLink>
+                        </li>
+                        <li className='bg-richblack-800 text-richblack-100 py-[8px] 
+                            px-[12px] rounded-[8px] border border-richblack-700'>
+                            <NavLink to="/messoff">MessOff</NavLink>
                         </li>
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>
