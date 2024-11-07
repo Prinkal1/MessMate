@@ -102,9 +102,7 @@ exports.listMessOff = async (req, res) => {
 
 
 
-// @route   GET api/messoff/update
-// @desc    Update mess off request
-// @access  Public
+
 exports.updateMessOff = async (req, res) => {
     let success = false;
     const { id, status } = req.body;
