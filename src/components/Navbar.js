@@ -51,7 +51,7 @@ function Navbar(){
                         </li>
                         <li className='bg-richblack-800 text-richblack-100 py-[8px] 
                             px-[12px] rounded-[8px] border border-richblack-700'>
-                            <Link to="/Bill">Bill Section</Link>
+                            <Link to="/studentbill">Bill Section</Link>
                         </li>
                     </ul>
                 </nav>

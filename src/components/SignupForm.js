@@ -1,75 +1,102 @@
-import { useState } from "react"
-import { toast } from "react-hot-toast"
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import { sendOtp } from "../services/operations/authAPI"
-import { setSignupData } from "../slices/authSlice"
-import { ACCOUNT_TYPE } from "../utils/constants"
+import { useState } from "react";
+import { toast } from "react-hot-toast";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { sendOtp } from "../services/operations/authAPI";
+import { setSignupData } from "../slices/authSlice";
+import { ACCOUNT_TYPE } from "../utils/constants";
 
 function SignupForm() {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  // student or admin
-  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT)
+  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT);
 
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    contactNumber:"",
+    contactNumber: "",
     password: "",
-    messacc :"",
+    messacc: "",
     confirmPassword: "",
-  })
+  });
 
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const { firstName, lastName, messacc ,email,contactNumber, password, confirmPassword } = formData
+  const { firstName, lastName, messacc, email, contactNumber, password, confirmPassword } = formData;
 
-  // Handle input fields, when some value changes
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
 
-  // Handle Form Submission
-  const handleOnSubmit = (e) => {
-    e.preventDefault()
+  const validateForm = () => {
+    // Phone Number Validation
+    const phonePattern = /^[1-9]\d{9}$/;
+    if (!phonePattern.test(contactNumber)) {
+      toast.error("Please enter a valid 10-digit phone number that does not start with 0.");
+      return false;
+    }
 
+    // Email Validation
+    if (!email.includes("@")) {
+      toast.error("Please enter a valid email address that includes '@'.");
+      return false;
+    }
+
+    // Password Validation
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/;
+    if (!passwordPattern.test(password)) {
+      toast.error("Password must be at least 10 characters long and include uppercase and lowercase letters, numbers, and special characters.");
+      return false;
+    }
+
+    // Confirm Password
     if (password !== confirmPassword) {
-      toast.error("Passwords Do Not Match")
-      return
-    }
-    const signupData = {
-      ...formData,
-      accountType,
+      toast.error("Passwords Do Not Match");
+      return false;
     }
 
-    // Setting signup data to state
-    // To be used after otp verification
-    dispatch(setSignupData(signupData))
-    // Send OTP to user for verification
-    dispatch(sendOtp(formData.email, navigate))
-    console.log("email :",email);
+    // Account Number Validation (messacc)
+    const accountNumberPattern = /^3\d{3}$/; // Starts with '3' and followed by 3 digits
+    if (!accountNumberPattern.test(messacc)) {
+      toast.error("Mess account number must be exactly 4 digits long and start with '3'.");
+      return false;
+    }
 
-    // Reset
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      messacc :"",
-      contactNumber :"",
-      password: "",
-      confirmPassword: "",
-    })
-    setAccountType(ACCOUNT_TYPE.STUDENT)
-  }
- 
+    return true;
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      const signupData = {
+        ...formData,
+        accountType,
+      };
+
+      dispatch(setSignupData(signupData));
+      dispatch(sendOtp(formData.email, navigate));
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        messacc: "",
+        contactNumber: "",
+        password: "",
+        confirmPassword: "",
+      });
+      setAccountType(ACCOUNT_TYPE.STUDENT);
+    }
+  };
+
   return (
     <div>
       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
@@ -117,20 +144,21 @@ function SignupForm() {
             className="bg-richblack-800 rounded-[0.5rem] mt-[1rem] text-richblack-5 w-full p-[12px]"
           />
         </label>
-        
-          <label className='w-full'>
-            <p className='text-[1rem] text-richblack-5 mb-1 leading-[1.375rem]'>Mess Account Number<sup className='text-pink-200'>*</sup></p>
-              <input
-                required
-                type="number"
-                name="messacc"
-                onChange={handleOnChange}
-                placeholder="Enter mess account"
-                value={messacc}
-                className='bg-richblack-800 mt-[1rem] rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
-                />
-          </label>   
-          <label className="w-full">
+
+        <label className="w-full">
+          <p className="text-[1rem] text-richblack-5 mb-1 leading-[1.375rem]">Mess Account Number<sup className="text-pink-200">*</sup></p>
+          <input
+            required
+            type="number"
+            name="messacc"
+            onChange={handleOnChange}
+            placeholder="Enter mess account"
+            value={messacc}
+            className="bg-richblack-800 mt-[1rem] rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
+          />
+        </label>
+
+        <label className="w-full">
           <p className="mb-1 text-[1rem] leading-[1.375rem] text-richblack-5">
             Contact Number <sup className="text-pink-200">*</sup>
           </p>
@@ -140,11 +168,11 @@ function SignupForm() {
             name="contactNumber"
             value={contactNumber}
             onChange={handleOnChange}
-            placeholder="Enter contactNumber"
+            placeholder="Enter contact number"
             className="bg-richblack-800 mt-[1rem] rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
           />
-        </label> 
-        
+        </label>
+
         <div className="flex gap-x-4">
           <label className="relative">
             <p className="mb-1 text-[1rem] leading-[1.375rem] text-richblack-5">
@@ -171,7 +199,7 @@ function SignupForm() {
             </span>
           </label>
           <label className="relative">
-            <p className="mb-1 text-[1rem] leading-[1.375rem] text-richblack-5 ">
+            <p className="mb-1 text-[1rem] leading-[1.375rem] text-richblack-5">
               Confirm Password <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -203,9 +231,7 @@ function SignupForm() {
         </button>
       </form>
     </div>
-    
-  )
-  
+  );
 }
 
 export default SignupForm

@@ -10,10 +10,10 @@ function AdAttendance() {
   const [unmarkedStudents, setUnmarkedStudents] = useState([]);
   const [markedStudents, setMarkedStudents] = useState([]);
   const [present, setPresent] = useState(0);
-  const [absent, setAbsent] = useState(0); // New state for absent students
-  const [unmarkedCount, setUnmarkedCount] = useState(0); // Unmarked count
+  const [absent, setAbsent] = useState(0);
+  const [unmarkedCount, setUnmarkedCount] = useState(0);
+  const [searchTerm, setSearchTerm] = useState(''); // New state for search term
 
-  // Fetch all students and attendance
   const getALL = async () => {
     setProgress(30);
     const marked = await fetch("http://localhost:4000/pages/getAllAttendance", {
@@ -27,12 +27,12 @@ function AdAttendance() {
     setProgress(50);
 
     if (markedData.success) {
-      // Process marked students
       const markedStudents = markedData.attendance.map((user) => ({
         id: user._id,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        messacc: user.messacc,
         attendance: user.status === "present",
       }));
 
@@ -41,17 +41,13 @@ function AdAttendance() {
       const data = await getAllStudents();
       const allStudents = data.user;
 
-      // Filter unmarked students
       const unmarkedStudents = allStudents.filter(
         (user) => !markedStudents.find((markedStudent) => markedStudent.id === user._id)
       );
       
       setUnmarkedStudents(unmarkedStudents);
-      
-      // Set unmarked count
       setUnmarkedCount(unmarkedStudents.length);
 
-      // Calculate present and absent counts
       const presentCount = markedStudents.filter((user) => user.attendance === true).length;
       const absentCount = markedStudents.filter((user) => user.attendance === false).length;
 
@@ -61,7 +57,6 @@ function AdAttendance() {
     setProgress(100);
   };
 
-  // Mark attendance
   const markAttendance = async (id, isPresent) => {
     const response = await fetch(`http://localhost:4000/pages/markAttendance`, {
       method: "POST",
@@ -81,29 +76,25 @@ function AdAttendance() {
         pauseOnHover: true,
       });
 
-      // Find the student that was just marked
       const markedStudent = unmarkedStudents.find((user) => user._id === id);
 
       if (markedStudent) {
-        // Update marked and unmarked students list
         const updatedUnmarkedStudents = unmarkedStudents.filter((user) => user._id !== id);
         const updatedMarkedStudents = [...markedStudents, { ...markedStudent, attendance: isPresent }];
 
-        setUnmarkedStudents(updatedUnmarkedStudents); // Update unmarked students
-        setMarkedStudents(updatedMarkedStudents); // Add to marked students
+        setUnmarkedStudents(updatedUnmarkedStudents);
+        setMarkedStudents(updatedMarkedStudents);
 
-        // Update counts
         if (isPresent) {
           setPresent((prev) => prev + 1);
         } else {
           setAbsent((prev) => prev + 1);
         }
-        setUnmarkedCount(updatedUnmarkedStudents.length); // Decrease unmarked count
+        setUnmarkedCount(updatedUnmarkedStudents.length);
       }
     }
   };
 
-  // Re-fetch attendance data on page load
   useEffect(() => {
     getALL();
   }, []);
@@ -157,21 +148,37 @@ function AdAttendance() {
     </div>
   );
 
+  // Filter unmarked students based on search term
+  const filteredUnmarkedStudents = unmarkedStudents.filter((user) =>
+    user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.messacc.toString().includes(searchTerm)
+  );
+
   return (
     <div className="w-full h-screen flex flex-col gap-3 items-center xl:pt-0 md:pt-40 pt-64 mt-[5rem] overflow-auto max-h-screen">
       <LoadingBar color="#0000FF" progress={progress} onLoaderFinished={() => setProgress(0)} />
       <h1 className="text-white font-bold text-5xl">Attendance</h1>
       <p className="text-white text-xl mb-10">Date: {date}</p>
+
+      {/* Search Bar */}
+      <input
+        type="text"
+        placeholder="Search by First Name or MessAcc"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="mb-5 p-2 w-full max-w-md rounded border"
+      />
+
       <div className="flex gap-5 flex-wrap items-center justify-center">
         <>{graph}</>
         <div className="flow-root md:w-[400px] w-full bg-neutral-950 px-7 py-5 rounded-lg shadow-xl max-h-[250px] overflow-auto">
-          <span className={`font-bold text-xl text-white ${unmarkedStudents.length ? "block" : "hidden"}`}>
+          <span className={`font-bold text-xl text-white ${filteredUnmarkedStudents.length ? "block" : "hidden"}`}>
             Unmarked Students
           </span>
           <ul role="list" className="divide-y divide-gray-700 text-white">
-            {unmarkedStudents.length === 0
+            {filteredUnmarkedStudents.length === 0
               ? "All students are marked!"
-              : unmarkedStudents.map((user) =>
+              : filteredUnmarkedStudents.map((user) =>
                   user.attendance === undefined ? (
                     <li className="py-3 sm:py-4 px-5 rounded hover:bg-neutral-700 hover:scale-105 transition-all" key={user._id}>
                       <div className="flex items-center space-x-4">
@@ -190,6 +197,7 @@ function AdAttendance() {
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium truncate text-white">{user.firstName}</p>
                           <p className="text-sm truncate text-gray-400">{user.email}</p>
+                          <p className="text-sm truncate text-gray-400">{user.messacc}</p>
                         </div>
                         <button className="hover:underline hover:text-green-600 hover:scale-125 transition-all" onClick={() => markAttendance(user._id, true)}>
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

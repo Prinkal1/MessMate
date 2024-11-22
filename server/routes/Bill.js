@@ -1,20 +1,14 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-//menu
 const {
     addBill,
     fetchBill,
-    addAdditionalBill,
-    additionalBillfetch
-} = require("../controllers/Bill")
+    calculateStudentBills,
+} = require("../controllers/Bill");
 
+router.post("/addBill", addBill); // Endpoint to add bill for the month
+router.get("/fetchBill/:month/:year", fetchBill); // Endpoint to fetch bill
+router.get("/calculateStudentBills/:month/:year", calculateStudentBills); // Endpoint to calculate student bills
 
-//notification
-router.post("/addBill" ,addBill)
-router.get("/fetchBill",fetchBill)
-router.post("/addAdditionalBill" ,addAdditionalBill)
-router.get("/additionalBillfetch/:messacc" ,additionalBillfetch)
-
-
-module.exports = router
+module.exports = router;

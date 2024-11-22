@@ -1,140 +1,144 @@
-const AdditionalBill = require("../models/AdditionalBill");
-const Bill = require("../models/Bill")
+const Bill = require("../models/Bill");
+const User = require("../models/User");
+const Attendance = require("../models/Attendance");
 
-//to add diff bills
-exports.addBill = async (req, res) =>{
-    try{
-        const{
+// Calculate total monthly expenses and divide by students for per-student cost
+exports.addBill = async (req, res) => {
+    try {
+        const { month, year, expenses } = req.body;
+        const { grocery, milk, vegetables, otherItems = 0 } = expenses;
+
+        if (!month || !year || !grocery || !milk || !vegetables) {
+            return res.status(400).json({
+                success: false,
+                message: "Fields month, year, grocery, milk, and vegetables are required",
+            });
+        }
+
+        // Calculate total expense
+        const totalExpense = grocery + milk + vegetables + otherItems;
+
+        // Get all active students
+        const students = await User.find({ accountType: "Student", active: true });
+        const totalStudents = students.length;
+
+        if (totalStudents === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "No active students available for billing",
+            });
+        }
+
+        // Calculate cost per student (for present days)
+        const perStudentCost = totalExpense / totalStudents;
+
+        // Save Bill Record
+        const bill = new Bill({
             month,
             year,
-            groceryBill,
-            milkBill,
-            vegeBill,
-            totalBill
-        }= req.body
+            totalExpense,
+            perStudentCost,
+            totalStudents,
+            expenses: {
+                grocery,
+                milk,
+                vegetables,
+                otherItems,
+            },
+        });
 
-        //check all details are present
-        if (
-            !month ||
-            !year ||
-            !groceryBill ||
-            !milkBill||
-            !vegeBill ||
-            !totalBill 
-        ) {
-            return res.status(403).send({
-                success: false,
-                message: "Adding all fields are required",
-            });
-        }
-        const bill = await Bill.create({
-			month,
-            year,
-            groceryBill,
-            milkBill,
-            vegeBill,
-            totalBill
-		});
-        console.log(bill)
-		return res.status(200).json({
-			success: true,
-			bill,
-			message: "Bill added successfully",
-		});
-    }catch (error) {
-    console.error(error);
-    return res.status(500).json({
-        success: false,
-        message: "Bill cannot be added",
+        await bill.save();
+        return res.status(201).json({
+            success: true,
+            message: "Bill added successfully",
+            bill,
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "An error occurred while adding the bill",
+            error: error.message,
         });
     }
-}
+};
 
-//fetch whole data 
-exports.fetchBill = async (req, res) =>{
+// Calculate individual student bills based on attendance
+exports.calculateStudentBills = async (req, res) => {
     try {
-        const bill = await Bill.find();
-        console.log(bill)
+        const { month, year } = req.params;
+
+        // Retrieve the bill for the specified month and year
+        const bill = await Bill.findOne({ month, year });
+        if (!bill) {
+            return res.status(404).json({
+                success: false,
+                message: `Bill record not found for ${month}/${year}`,
+            });
+        }
+
+        const perStudentCost = bill.perStudentCost;
+        const studentBills = [];
+
+        // Fetch attendance and calculate cost for each student
+        const students = await User.find({ accountType: "Student", active: true });
+        for (const student of students) {
+            // Get attendance for the student in the specific month and year
+            const attendanceRecords = await Attendance.find({
+                user: student._id,
+                date: {
+                    $gte: new Date(`${year}-${month}-01`),
+                    $lt: new Date(`${year}-${month}-31`),
+                },
+                status: "present",
+            });
+
+            const presentDays = attendanceRecords.length;
+            const totalBillForStudent = presentDays * perStudentCost;
+
+            studentBills.push({
+                studentId: student._id,
+                name: `${student.firstName} ${student.lastName}`,
+                presentDays,
+                totalBill: totalBillForStudent,
+            });
+        }
+
         return res.status(200).json({
-			success: true,
-			bill,
-			message: "Bill fetched successfully",
-		});
-      } catch (error) {
-        res.status(500).json({ message: error.message });
-      }
-}
-
-
-//add additional bill
-exports.addAdditionalBill = async (req, res) =>{
-    try{
-        const{
-            firstName,
-            lastName,
-            messacc,
-            milk,
-            maggi,
-            tea,
-            bread,
-            monthlyBill
-        }= req.body
-
-        //check all details are present
-        if (
-            !firstName ||
-            !lastName ||
-            !messacc 
-        ) {
-            return res.status(403).send({
-                success: false,
-                message: "Adding details are required",
-            });
-        }
-        const additionalbill = await AdditionalBill.create({
-			firstName,
-            lastName,
-            messacc,
-            milk,
-            maggi,
-            tea,
-            bread,
-            monthlyBill
-		});
-        console.log(additionalbill)
-		return res.status(200).json({
-			success: true,
-			additionalbill,
-			message: "Additional Bill added successfully",
-		});
-    }catch (error) {
-    console.error(error);
-    return res.status(500).json({
-        success: false,
-        message: "Additional Bill cannot be added",
+            success: true,
+            message: "Student bills calculated successfully",
+            studentBills,
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "An error occurred while calculating student bills",
+            error: error.message,
         });
     }
-}
+};
 
-//additionalbill fetch
-exports.additionalBillfetch = async (req, res) =>{
+// Fetch the bill details for a specific month and year
+exports.fetchBill = async (req, res) => {
     try {
-        const messacc = req.params.messacc
-        console.log({messacc})
-        const additionalbill = await AdditionalBill.find({messacc});
-		if (!additionalbill.length) {
-			return res.status(404).json({
-				success: false,
-				message: `Additional Bill Not Found`,
-			});
-		}
-        console.log(additionalbill)
-        res.json(additionalbill);
-    
-      } catch (error) {
+        const { month, year } = req.params;
+        const bill = await Bill.findOne({ month, year });
+        if (!bill) {
+            return res.status(404).json({
+                success: false,
+                message: `No bill found for ${month}/${year}`,
+            });
+        }
+        res.status(200).json({
+            success: true,
+            bill,
+            message: "Bill fetched successfully",
+        });
+    } catch (error) {
         res.status(500).json({
             success: false,
-            message: error.message 
+            message: error.message,
         });
     }
-}
+};

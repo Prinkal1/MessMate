@@ -32,6 +32,8 @@ import AddMenu from "./pages/AddMenu"
 import AdAttendance from "./pages/AdAttendance";
 import MessOff from "./pages/MessOff"
 import AdMessOff from "./pages/AdMessOff"
+import StudentBill from "./pages/StudentBill";
+import AdminBill from "./pages/AdminBill";
 
 
 function App() {
@@ -53,6 +55,18 @@ function App() {
         <Route path="/complaint" element = {
           <PrivateRoute isLoggedIn={isLoggedIn}>
               <Complaint/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/studentbill" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <StudentBill/>
+          </PrivateRoute>
+        } />
+
+        <Route path="/adminViewBill" element = {
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AdminBill/>
           </PrivateRoute>
         } />
 
